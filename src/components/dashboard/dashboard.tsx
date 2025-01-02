@@ -1,5 +1,5 @@
 import React from 'react'
-import MenuCard from '../common/menuCard.tsx'
+import MenuCard from '../common/MenuCard.tsx'
 import './style/dashboard.css'
 
 const Dashboard: React.FC = () => {
@@ -15,14 +15,16 @@ const Dashboard: React.FC = () => {
     ]
 
     return (
-        <div className="dashboard">
-            {menuItems.map((item) => (
-                <MenuCard 
-                    key={item.id}
-                    title={item.title}
-                    description={item.description}
-                />
-            ))}
+        <div className="dashboard-container">
+            <div className="dashboard">
+                {menuItems.map((item) => (
+                    <MenuCard 
+                        key={item.id}
+                        title={item.title}
+                        description={item.description}
+                    />
+                ))}
+            </div>
         </div>
     )
 }
