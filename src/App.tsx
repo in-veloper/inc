@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import Dashboard from './components/dashboard/dashboard.tsx';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <Dashboard />
+      {/* <header className="App-header">
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -16,7 +18,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
