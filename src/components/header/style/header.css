@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f1f1f1;
+    border-bottom: 1px dotted lightgray;
     color: #333;
     text-align: start;
     padding-left: 20px;
@@ -13,9 +13,45 @@
 }
 
 .weather-info {
+    display: flex;
+    align-items: center;
     margin-left: auto; 
     font-size: 14px;
     color: #333;
     white-space: nowrap;
     padding-right: 20px;
+}
+
+.location-icon {
+    font-size: 11px;
+    margin-left: 3px;
+}
+
+.weather-cityName {
+    font-weight: bold;
+}
+
+.weather-temp-humidity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.weather-temp-humidity span {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.weather-detail {
+    margin-left: 15px;
+}
+
+.temp-icon {
+    font-size: 13px;
+}
+
+.humid-icon {
+    font-size: 15px;
+    margin-bottom: -2px;
 }

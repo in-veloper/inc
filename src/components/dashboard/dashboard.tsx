@@ -1,6 +1,6 @@
 import React from 'react'
-import MenuCard from '../common/MenuCard.tsx'
-import { menuItems } from '../../consts/MenuItems.ts'
+import MenuCard from '../common/MenuCard'
+import { menuItems } from '../../consts/MenuItems'
 import './style/dashboard.css'
 
 const Dashboard: React.FC = () => {

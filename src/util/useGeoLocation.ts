@@ -30,7 +30,7 @@ export const useGeoLocation = (options = {}) => {
                 setError('위치 정보를 획득하기 위한 요청의 허용 시간 초과')
                 break
             default:
-                setError('확인되지 않은 Error : ', err.message)
+                setError('확인되지 않은 Error : ' + err.message)
                 break
         }
     }
