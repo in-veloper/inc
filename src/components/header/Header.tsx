@@ -5,7 +5,9 @@ import axios from 'axios'
 import { FaLocationArrow } from 'react-icons/fa6'
 import { FaTemperatureHigh } from "react-icons/fa6"
 import { RiWaterPercentLine } from "react-icons/ri"
+import { menuItems } from '../../consts/MenuItems'
 import './style/header.css'
+import { Link, useNavigate } from 'react-router-dom'
 
 const API_KEY = process.env.REACT_APP_WEATHER_KEY
 const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_MAP_API_KEY
@@ -28,6 +30,7 @@ const Header: React.FC = () => {
     const { location, error } = useGeoLocation(geolocationOptions)
     const [weather, setWeather] = useState<Weather | null>(null)
     const [cityName, setCityName] = useState('')
+    const navigate = useNavigate()
 
     const getWeather = async (latitude: number, longitude: number) => {
         try {
@@ -77,28 +80,46 @@ const Header: React.FC = () => {
         }
     }, [location])
 
+    const handleLogoClick = () => {
+        navigate('/')
+    }
+
     return (
         <div className="app-header">
             <img 
                 src="/inc_icon.png"
                 className="logo_icon"
                 alt="logo"
+                onClick={handleLogoClick}
             />
-            <b>Industrial Nurse Community</b>
+            <div className='menu-bar'>
+                {menuItems.map((item) => (
+                    <Link key={item.id} to={item.path} className='menu-item'>
+                        {item.title}
+                    </Link>
+                ))}
+            </div>
             <div className="weather-info">
-                <img src={weather?.icon} alt={weather?.description}/>
-                <div className='weather-cityName'>
-                    {cityName}
-                    <FaLocationArrow className='location-icon' />
-                </div> 
-                <div className='weather-detail'>
-                    <div className='weather-temp-humidity'>
-                        <span><FaTemperatureHigh className='temp-icon' /> {weather?.temp}°</span>
-                        <span><RiWaterPercentLine className='humid-icon' /> {weather?.humidity}%</span>
-                    </div>
-                    <div>{weather?.description}</div>
-                </div>
-                {/* {location?.latitude} {location?.longitude} */}
+                {weather && cityName ? (
+                    <>
+                        <img src={weather?.icon} alt={weather?.description}/>
+                        <div className='weather-cityName'>
+                            {cityName}
+                            <FaLocationArrow className='location-icon' />
+                        </div> 
+                        <div className='weather-detail'>
+                            <div className='weather-temp-humidity'>
+                                <span><FaTemperatureHigh className='temp-icon' /> {weather?.temp}°</span>
+                                <span><RiWaterPercentLine className='humid-icon' /> {weather?.humidity}%</span>
+                            </div>
+                            <div className='weather-description'>{weather?.description}</div>
+                        </div>
+                    </>
+                ):(
+                    <>
+                        <b className='info-message'>날씨 정보 받아오는 중</b>
+                    </>
+                )}
             </div>
         </div>
     )

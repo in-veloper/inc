@@ -2,7 +2,7 @@
     width: 200px;
     height: 150px;
     background-color: #f9f9f9;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(121, 119, 119, 0.1);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -10,6 +10,7 @@
     justify-content: center;
     padding: 10px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
 }
   
 .menu-card:hover {

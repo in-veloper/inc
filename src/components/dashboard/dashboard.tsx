@@ -13,6 +13,7 @@ const Dashboard: React.FC = () => {
                         key={item.id}
                         title={item.title}
                         description={item.description}
+                        path={item.path}
                     />
                 ))}
             </div>
