@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useGeoLocation } from '../../util/useGeoLocation'
+import { IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import weatherDescKo from '../../util/weatherDescKo'
 import axios from 'axios'
 import { FaLocationArrow } from 'react-icons/fa6'
-import { FaTemperatureHigh } from "react-icons/fa6"
-import { RiWaterPercentLine } from "react-icons/ri"
+import { FaSearch } from "react-icons/fa"
 import { menuItems } from '../../consts/MenuItems'
 import './style/header.css'
 import { Link, useNavigate } from 'react-router-dom'
@@ -30,6 +30,8 @@ const Header: React.FC = () => {
     const { location, error } = useGeoLocation(geolocationOptions)
     const [weather, setWeather] = useState<Weather | null>(null)
     const [cityName, setCityName] = useState('')
+    const [searchQuery, setSearchQuery] = useState('')
+
     const navigate = useNavigate()
 
     const getWeather = async (latitude: number, longitude: number) => {
@@ -84,14 +86,47 @@ const Header: React.FC = () => {
         navigate('/')
     }
 
+    const handleSearch = () => {
+
+    }
+
     return (
         <div className="app-header">
-            <img 
-                src="/inc_icon.png"
-                className="logo_icon"
-                alt="logo"
-                onClick={handleLogoClick}
-            />
+            <div className='logo-div' onClick={handleLogoClick}>
+                <Typography
+                    variant='h5'
+                    sx={{
+                        display: "inline",
+                        fontFamily: "'Baloo Bhaijaan', cursive",
+                        fontWeight: 400,
+                        color: "#4829B2",
+                    }}
+                >
+                    I
+                </Typography>
+                <Typography
+                    variant='h5'
+                    sx={{
+                        display: "inline",
+                        fontFamily: "'Baloo Bhaijaan', cursive",
+                        fontWeight: 400,
+                        color: "#B32942",
+                    }}
+                >
+                    Nu
+                </Typography>
+                <Typography
+                    variant='h5'
+                    sx={{
+                        display: "inline",
+                        fontFamily: "'Baloo Bhaijaan', cursive",
+                        fontWeight: 400,
+                        color: "#4829B2",
+                    }}
+                >
+                    Co
+                </Typography>
+            </div>
             <div className='menu-bar'>
                 {menuItems.map((item) => (
                     <Link key={item.id} to={item.path} className='menu-item'>
@@ -99,6 +134,47 @@ const Header: React.FC = () => {
                     </Link>
                 ))}
             </div>
+
+            <div className='search-bar'>
+                <TextField 
+                    variant='outlined'
+                    placeholder='전체 검색'
+                    size='small'
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={(e) => {
+                        if(e.key === 'Enter') handleSearch()
+                    }}
+                    slotProps={{
+                        input: {
+                            endAdornment: (
+                                <InputAdornment position='end'>
+                                    <FaSearch style={{ color: "#4829B2"}} />
+                                </InputAdornment>
+                            )
+                        }
+                    }}
+                    sx={{
+                        width: '250px',
+                        borderRadius: '5px',
+                        '& .MuiOutlinedInput-root': {
+                            borderRadius: '5px',
+                            "&:hover .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "#4829B2",
+                            },
+                            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "#4829B2",
+                                borderWidth: "1px"
+                            },
+                        },
+                        '& .MuiOutlinedInput-notchedOutline': {
+                            borderColor: '#4829B2',
+                        },
+                    }}
+                >
+                </TextField>
+            </div>
+            
             <div className="weather-info">
                 {weather && cityName ? (
                     <>
@@ -107,17 +183,19 @@ const Header: React.FC = () => {
                             {cityName}
                             <FaLocationArrow className='location-icon' />
                         </div> 
-                        <div className='weather-detail'>
-                            <div className='weather-temp-humidity'>
-                                <span><FaTemperatureHigh className='temp-icon' /> {weather?.temp}°</span>
-                                <span><RiWaterPercentLine className='humid-icon' /> {weather?.humidity}%</span>
-                            </div>
-                            <div className='weather-description'>{weather?.description}</div>
+                        <div className='weather-temp'>
+                            <span><b className='temp-text'>온도</b> {weather?.temp}°</span>
+                        </div>
+                        <div className='weather-humidity'>
+                            <span><b className='humidity-text'>습도</b> {weather?.humidity}%</span>
+                        </div>
+                        <div className='weather-description'>
+                            {weather?.description}
                         </div>
                     </>
                 ):(
                     <>
-                        <b className='info-message'>날씨 정보 받아오는 중</b>
+                        <div className='info-message'>날씨 정보 받아오는 중</div>
                     </>
                 )}
             </div>

@@ -3,7 +3,7 @@ import { AgGridReact } from 'ag-grid-react'
 import { ColDef } from 'ag-grid-community'
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
-import { ClientSideRowModelModule, PaginationModule, TextFilterModule, NumberFilterModule, ValidationModule } from 'ag-grid-community'
+import { ClientSideRowModelModule, PaginationModule, TextFilterModule, NumberFilterModule, ValidationModule, TooltipModule } from 'ag-grid-community'
 import { Input, Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter, ListGroup, ListGroupItem, CardImg, Table, Popover, PopoverBody, PopoverHeader } from "reactstrap";
 import Circle from "../../asset/img/medicine/circle.png";
 import Oval from "../../asset/img/medicine/oval.png";
@@ -249,7 +249,7 @@ const MediInfo: React.FC = () => {
                                 pagination={true} 
                                 paginationPageSize={10}
                                 paginationPageSizeSelector={[10, 20, 50, 100]}
-                                modules={[ClientSideRowModelModule, PaginationModule, TextFilterModule, NumberFilterModule, ValidationModule]}
+                                modules={[ClientSideRowModelModule, PaginationModule, TextFilterModule, NumberFilterModule, ValidationModule, TooltipModule]}
                             />
                         </div>
                     </Col>

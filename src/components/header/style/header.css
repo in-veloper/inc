@@ -2,45 +2,38 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px dotted lightgray;
     color: #333;
     text-align: start;
     padding-left: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* 하단 박스 쉐도우 */
+    min-height: 50px;
 }
 
-.app-header img {
+.logo-div {
     cursor: pointer;
-}
-
-.logo_icon {
-    height: 50px;
 }
 
 .weather-info {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-left: auto; 
     font-size: 12px;
     color: #333;
     white-space: nowrap;
     padding-right: 20px;
+    min-width: 265px;
 }
 
 .location-icon {
     font-size: 11px;
     margin-left: 3px;
+    margin-bottom: -1px;
 }
 
 .weather-cityName {
     font-weight: bold;
     color: #707070;
-}
-
-.weather-temp-humidity {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 3px;
 }
 
 .weather-temp-humidity span {
@@ -67,27 +60,63 @@
 .weather-description {
     font-weight: bold;
     color: #707070;
+    text-align: center;
+    margin-left: 10px;
 }
 
 .menu-bar {
     display: flex;
-    gap: 17px;
+    gap: 10px;
     align-items: center;
     margin-left: 20px;
 }
 
 .menu-item {
     font-size: 14px;
-    color: #707070;
+    color: #4829B2;
+    font-weight: bold;
     cursor: pointer;
     transition: color 0.3s;
     text-decoration: none;
+    padding: 16px 15px;
 }
 
 .menu-item:hover {
-    font-weight: bold;
+    background-color: rgba(72, 41, 178, 0.1);
+    color: #000;
 }
 
 .info-message {
     color: #707070;
+    text-align: center;
+    font-weight: bold;
+}
+
+.logo-text {
+    font-family: "'Baloo Bhaijaan', cursive";
+    font-weight: 400;
+}
+
+.weather-temp {
+    margin-left: 10px;
+}
+
+.weather-humidity {
+    margin-left: 5px;
+}
+
+.temp-text {
+    color: #707070;
+}
+
+.humidity-text {
+    color: #707070;
+}
+
+.search-bar {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 10px;
 }
