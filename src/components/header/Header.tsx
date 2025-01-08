@@ -31,6 +31,7 @@ const Header: React.FC = () => {
     const [weather, setWeather] = useState<Weather | null>(null)
     const [cityName, setCityName] = useState('')
     const [searchQuery, setSearchQuery] = useState('')
+    const [activeMenu, setActiveMenu] = useState<string | null>(null)
 
     const navigate = useNavigate()
 
@@ -90,6 +91,14 @@ const Header: React.FC = () => {
 
     }
 
+    const handleMounseEnter = (menuTitle: string) => {
+        setActiveMenu(menuTitle)
+    }
+
+    const handleMouseLeave = () => {
+        setActiveMenu(null)
+    }
+
     return (
         <div className="app-header">
             <div className='logo-div' onClick={handleLogoClick}>
@@ -127,12 +136,35 @@ const Header: React.FC = () => {
                     Co
                 </Typography>
             </div>
-            <div className='menu-bar'>
-                {menuItems.map((item) => (
-                    <Link key={item.id} to={item.path} className='menu-item'>
-                        {item.title}
-                    </Link>
-                ))}
+            <div className="dropdown-menu">
+                <div className='menu-bar'>
+                    {menuItems.map((menu, index) => (
+                        <div
+                            key={index}
+                            className='menu-iem'
+                            onMouseEnter={() => handleMounseEnter(menu.title)}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            <Link to="#" className='menu-link'>
+                                {menu.title}
+                            </Link>
+                            {activeMenu === menu.title && (
+                                <div className='submenu'>
+                                    {menu.subItems.map((subItem, subIndex) => (
+                                        <Link key={subIndex} to="#" className='submenu-item'>
+                                            {subItem}
+                                        </Link>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                    {/* {menuItems.map((item) => (
+                        <Link key={item.id} to={item.path} className='menu-item'>
+                            {item.title}
+                        </Link>
+                    ))} */}
+                </div>
             </div>
 
             <div className='search-bar'>
