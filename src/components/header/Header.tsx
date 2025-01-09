@@ -210,6 +210,11 @@ const Header: React.FC = () => {
                         '& .MuiOutlinedInput-notchedOutline': {
                             borderColor: '#4829B2',
                         },
+                        '& .MuiInputBase-input': { // 입력 텍스트 스타일
+                            fontSize: '13px', // 입력 텍스트 크기
+                            fontWeight: '400', // 텍스트 굵기
+                            color: '#333', // 텍스트 색상
+                        },
                         '& .MuiInputBase-input::placeholder': { // 플레이스홀더 스타일 적용
                             fontSize: '13px', // 글자 크기 조정
                         },
