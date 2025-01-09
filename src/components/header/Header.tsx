@@ -122,7 +122,7 @@ const Header: React.FC = () => {
                         color: "#B32942",
                     }}
                 >
-                    Nu
+                    N
                 </Typography>
                 <Typography
                     variant='h5'
@@ -133,37 +133,45 @@ const Header: React.FC = () => {
                         color: "#4829B2",
                     }}
                 >
-                    Co
+                    C
                 </Typography>
             </div>
             <div className="dropdown-menu">
-                <div className='menu-bar'>
-                    {menuItems.map((menu, index) => (
-                        <div
-                            key={index}
-                            className='menu-iem'
-                            onMouseEnter={() => handleMounseEnter(menu.title)}
-                            onMouseLeave={handleMouseLeave}
-                        >
-                            <Link to="#" className='menu-link'>
-                                {menu.title}
-                            </Link>
-                            {activeMenu === menu.title && (
-                                <div className='submenu'>
-                                    {menu.subItems.map((subItem, subIndex) => (
-                                        <Link key={subIndex} to="#" className='submenu-item'>
-                                            {subItem}
-                                        </Link>
-                                    ))}
-                                </div>
-                            )}
+                <div 
+                    className='menu-container'
+                    onMouseEnter={() => setActiveMenu('menu')}
+                    onMouseLeave={() => setActiveMenu(null)}
+                >
+                    <div className='menu-bar'>
+                        {menuItems.map((menu, index) => (
+                            <div
+                                key={index}
+                                className='menu-item'
+                            >
+                                <Link to="#" className='menu-link'>
+                                    {menu.title}
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+                    {activeMenu && (
+                        <div className="dropdown-box">
+                            <div className="dropdown-content">
+                                {menuItems.map((menu) => (
+                                    <div key={menu.title} className="dropdown-column">
+                                        <Typography className="column-title" sx={{ fontSize: 16, fontWeight: "bold", marginBottom: '10px' }}>
+                                            {menu.title}
+                                        </Typography>
+                                        {menu.subItems.map((subItem, subIndex) => (
+                                            <Link key={subIndex} to="#" className="dropdown-item">
+                                                {subItem}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    ))}
-                    {/* {menuItems.map((item) => (
-                        <Link key={item.id} to={item.path} className='menu-item'>
-                            {item.title}
-                        </Link>
-                    ))} */}
+                    )}
                 </div>
             </div>
 
@@ -201,6 +209,9 @@ const Header: React.FC = () => {
                         },
                         '& .MuiOutlinedInput-notchedOutline': {
                             borderColor: '#4829B2',
+                        },
+                        '& .MuiInputBase-input::placeholder': { // 플레이스홀더 스타일 적용
+                            fontSize: '13px', // 글자 크기 조정
                         },
                     }}
                 >

@@ -4,6 +4,8 @@
     background-color: #24282C;
     height: 35px;
     align-items: center;
+    padding-left: 150px;
+    padding-right: 150px;
 }
 
 .app-footer span{
