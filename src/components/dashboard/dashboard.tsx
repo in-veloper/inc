@@ -5,6 +5,21 @@ import Slider from "react-slick"
 import carouselTest1 from '../../asset/img/dashboard/carousel_test_1.jpg'
 import carouselTest2 from '../../asset/img/dashboard/carousel_test_2.jpg'
 import carouselTest3 from '../../asset/img/dashboard/carousel_test_3.jpg'
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Collapse from '@mui/material/Collapse';
+import Avatar from '@mui/material/Avatar';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import { red } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { WiDust } from "react-icons/wi";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './style/dashboard.css'
@@ -26,23 +41,12 @@ const Dashboard: React.FC = () => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        // appendDots: (dots: React.ReactNode) => (
-        //     <div
-        //         style={{
-        //             position: "absolute",
-        //             bottom: "50px", // dots를 이미지 내부에 위치
-        //             width: "100%",
-        //             textAlign: "center",
-        //         }}
-        //     >
-        //         <ul style={{ margin: "0", padding: "0" }}> {dots} </ul>
-        //     </div>
-        // )
+        fade: true
     }
     
     return (
-        <div className="dashboard-container">
-            <div className="dashboard">
+        <div className="dashboard">
+            <div style={{ display: 'flex'}}>
                 <div className='carousel-section'>
                     <Slider {...sliderSettings}>
                         {carouselItems.map((item) => (
@@ -53,16 +57,33 @@ const Dashboard: React.FC = () => {
                     </Slider>
 
                 </div>
-
-                {/* {menuItems.map((item) => (
-                    <MenuCard 
-                        key={item.id}
-                        title={item.title}
-                        description={item.description}
-                        path={item.path}
-                    />
-                ))} */}
+                <div style={{ marginLeft: 50 }}>
+                    <Card sx={{ width: '300px'}}>
+                        <CardHeader 
+                            avatar={
+                                // <Avatar sx={{ bgcolor: 'lightgray' }}>
+                                    <WiDust style={{ fontSize: 35 }} />
+                                // </Avatar>
+                            }
+                            action={
+                                <IconButton aria-label='settings'>
+                                    <MoreVertIcon />
+                                </IconButton>
+                            }
+                            title={<b>미세먼지 정보 알림</b>}
+                        />
+                    </Card>
+                </div>
             </div>
+
+            {/* {menuItems.map((item) => (
+                <MenuCard 
+                    key={item.id}
+                    title={item.title}
+                    description={item.description}
+                    path={item.path}
+                />
+            ))} */}
         </div>
     )
 }

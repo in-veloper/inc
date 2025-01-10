@@ -16,28 +16,23 @@
     padding: 20px;
 } */
 
-.dashboard-container {
-
-}
-
 .dashboard {
-
+    padding-left: 150px;
+    padding-top: 50px;
 }
 
 .carousel-section {
-    width: 600px;
-    margin-bottom: 30px;
+    width: 700px;
 }
 
 .carousel-item {
     text-align: center;
-    padding: 20px;
 }
 
 .carousel-image {
     width: 100%;
-    max-width: 500px;
-    height: auto;
+    max-width: 700px;
+    height: 300px;
     border-radius: 10px;
     margin: 0 auto 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -45,8 +40,8 @@
 
 .slick-dots {
     position: absolute;
-    bottom: 50px; 
-    left: 53%;
+    bottom: 30px; 
+    left: 50%;
     transform: translateX(-50%);
     display: flex !important;
     justify-content: center;
