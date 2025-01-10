@@ -55,12 +55,5 @@ export const menuItems = [
         description: '구인 및 구직', 
         path: '',
         subItems: ["사회건강", "인체해부"]
-    },
-    { 
-        id: 9, 
-        title: '자유게시판', 
-        description: '', 
-        path: '',
-        subItems: ["교육동영상", "계획서식"]
-    },
+    }
 ]

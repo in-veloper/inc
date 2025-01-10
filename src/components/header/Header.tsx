@@ -91,50 +91,14 @@ const Header: React.FC = () => {
 
     }
 
-    const handleMounseEnter = (menuTitle: string) => {
-        setActiveMenu(menuTitle)
-    }
-
-    const handleMouseLeave = () => {
-        setActiveMenu(null)
-    }
-
     return (
         <div className="app-header">
             <div className='logo-div' onClick={handleLogoClick}>
-                <Typography
-                    variant='h5'
-                    sx={{
-                        display: "inline",
-                        fontFamily: "'Baloo Bhaijaan', cursive",
-                        fontWeight: 400,
-                        color: "#4829B2",
-                    }}
-                >
-                    I
-                </Typography>
-                <Typography
-                    variant='h5'
-                    sx={{
-                        display: "inline",
-                        fontFamily: "'Baloo Bhaijaan', cursive",
-                        fontWeight: 400,
-                        color: "#B32942",
-                    }}
-                >
-                    N
-                </Typography>
-                <Typography
-                    variant='h5'
-                    sx={{
-                        display: "inline",
-                        fontFamily: "'Baloo Bhaijaan', cursive",
-                        fontWeight: 400,
-                        color: "#4829B2",
-                    }}
-                >
-                    C
-                </Typography>
+                <img 
+                    className='logo-icon'
+                    src='/logo_icon.png'
+                    alt='logo'
+                />
             </div>
             <div className="dropdown-menu">
                 <div 

@@ -16,6 +16,12 @@
     cursor: pointer;
 }
 
+.logo-icon {
+    height: 45px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
 .weather-info {
     display: flex;
     justify-content: center;
@@ -69,7 +75,6 @@
 
 .menu-bar {
     display: flex;
-    gap: 7px;
     align-items: center;
     margin-left: 20px;
 }
@@ -130,7 +135,7 @@
     text-decoration: none;
     color: #333;
     font-weight: bold;
-    padding: 17px 10px;
+    padding: 17px 13px;
 }
 
 .menu-link:hover {
