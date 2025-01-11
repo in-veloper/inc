@@ -6,8 +6,8 @@ import axios from 'axios'
 import { FaLocationArrow } from 'react-icons/fa6'
 import { FaSearch } from "react-icons/fa"
 import { menuItems } from '../../consts/MenuItems'
-import './style/header.css'
 import { Link, useNavigate } from 'react-router-dom'
+import './style/header.css'
 
 const API_KEY = process.env.REACT_APP_WEATHER_KEY
 const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_MAP_API_KEY
@@ -153,7 +153,7 @@ const Header: React.FC = () => {
                         input: {
                             endAdornment: (
                                 <InputAdornment position='end'>
-                                    <FaSearch style={{ color: "#4829B2"}} />
+                                    <FaSearch style={{ color: "#9E0011"}} />
                                 </InputAdornment>
                             )
                         }
@@ -164,15 +164,15 @@ const Header: React.FC = () => {
                         '& .MuiOutlinedInput-root': {
                             borderRadius: '5px',
                             "&:hover .MuiOutlinedInput-notchedOutline": {
-                                borderColor: "#4829B2",
+                                borderColor: "#9E0011",
                             },
                             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                                borderColor: "#4829B2",
+                                borderColor: "#9E0011",
                                 borderWidth: "1px"
                             },
                         },
                         '& .MuiOutlinedInput-notchedOutline': {
-                            borderColor: '#4829B2',
+                            borderColor: '#9E0011',
                         },
                         '& .MuiInputBase-input': { // 입력 텍스트 스타일
                             fontSize: '13px', // 입력 텍스트 크기
@@ -201,9 +201,9 @@ const Header: React.FC = () => {
                         <div className='weather-humidity'>
                             <span><b className='humidity-text'>습도</b> {weather?.humidity}%</span>
                         </div>
-                        <div className='weather-description'>
+                        {/* <div className='weather-description'>
                             {weather?.description}
-                        </div>
+                        </div> */}
                     </>
                 ):(
                     <>

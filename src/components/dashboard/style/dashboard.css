@@ -1,23 +1,10 @@
-/* .dashboard-container {
+.first-card-section {
     display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
-    box-sizing: border-box;
-    padding: 20px; 
 }
 
 .dashboard {
-    display: inline-grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    justify-items: center;
-    padding: 20px;
-} */
-
-.dashboard {
-    padding-left: 150px;
+    padding-left: 200px;
+    padding-right: 200px;
     padding-top: 50px;
 }
 
@@ -46,4 +33,91 @@
     display: flex !important;
     justify-content: center;
     align-items: center;
+}
+
+.weather-info {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.weather-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 17px;
+    margin-left: 20px;
+}
+
+.location-icon {
+    font-size: 11px;
+    margin-left: 3px;
+    margin-bottom: -1px;
+}
+
+.weather-city {
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.weather-temp-humidity span {
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.weather-detail {
+    margin-left: 15px;
+}
+
+.weather-main {
+    display: flex;
+    justify-content: center;
+}
+
+.temp-feature {
+    font-size: 25px;
+    margin-left: 5px;
+}
+
+.humidity-feature {
+    font-size: 25px;
+    margin-left: 5px;
+}
+
+.dashboard-humidity-text {
+    margin-left: 20px;
+}
+
+.dashboard-weather-description {
+    font-size: 15px;
+    text-align: center;
+}
+
+.weather-card {
+    margin-left: 50px;
+}
+
+.second-card-section {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px 0;
+    gap: 20px; 
+}
+
+.card-section .MuiCard-root {
+    flex: 1; 
+    margin: 0 5px; 
+    max-width: 400px; 
+    min-width: 300px; 
+}
+
+.dashboard-card-header {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.dashboard-weather-icon {
+    width: 60px;
+    margin-bottom: -10px;
 }
