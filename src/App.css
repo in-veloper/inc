@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;             /* 전체 화면 높이 차지 */
-  overflow: hidden;         /* 스크롤 제거 */
+  overflow-y: auto;
 }
 
 .App {
