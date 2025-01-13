@@ -5,6 +5,9 @@ import Slider from "react-slick"
 import carouselTest1 from '../../asset/img/dashboard/carousel_test_1.jpg'
 import carouselTest2 from '../../asset/img/dashboard/carousel_test_2.jpg'
 import carouselTest3 from '../../asset/img/dashboard/carousel_test_3.jpg'
+import bannerTest1 from '../../asset/img/banner/band_image.jpg'
+import bannerTest2 from '../../asset/img/banner/centrum_image.jpg'
+import bannerTest3 from '../../asset/img/banner/tylenol_image.jpg'
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -56,6 +59,41 @@ const carouselItems = [
     { id: 3, image: carouselTest3, title: "Item 3", description: "This is carousel item 3"}
 ]
 
+const frequentMenuItems = [
+    { id: 1, icon: <TbMessageReport style={{ fontSize: '24px', color: '#FFD700' }} />, title: '회원서비스' },
+    { id: 2, icon: <TbMessage2Bolt style={{ fontSize: '24px', color: '#FFD700' }} />, title: '보건안전센터' },
+    { id: 3, icon: <TbMessage2Heart style={{ fontSize: '24px', color: '#FFD700' }} />, title: '건강안전연구소' },
+    { id: 4, icon: <TbMessageReport style={{ fontSize: '24px', color: '#FFD700' }} />, title: '근로자건강센터' },
+    { id: 5, icon: <TbMessage2Bolt style={{ fontSize: '24px', color: '#FFD700' }} />, title: '직업건강웹진' },
+    { id: 6, icon: <TbMessage2Heart style={{ fontSize: '24px', color: '#FFD700' }} />, title: '온라인문진투고' },
+]
+
+const advertiseBanners = [
+    {
+        id: 1,
+        title: "박스 뜯는 번거로움 NO!",
+        description: "대용량 밴드",
+        image: bannerTest1,
+        width: "35%", 
+        height: "150px", 
+      },
+      {
+        id: 2,
+        title: "눈 건강관리",
+        description: "1회용 인공눈물",
+        image: bannerTest2,
+        width: "30%", 
+        height: "150px", 
+      },
+      {
+        id: 3,
+        title: "똑똑 복약 퀴즈이벤트",
+        description: "쿠폰도 받고 복약 상식도 UP",
+        image: bannerTest3,
+        width: "45%", 
+        height: "150px", 
+      },
+]
 
 const Dashboard: React.FC = () => {
     const { location, error } = useGeoLocation(geolocationOptions)
@@ -184,8 +222,18 @@ const Dashboard: React.FC = () => {
                 </div>
             </div>
 
+            <div className='frequent-menu-section'>
+                {frequentMenuItems.map((menu) => (
+                    <div key={menu.id} className='frequent-menu-item'>
+                        <div className='frequent-menu-icon'>{menu.icon}</div>
+                        <p className='frequent-menu-title'>{menu.title}</p>
+                    </div>
+                ))}
+
+            </div>
+
             <div className='second-card-section'>
-                <Card sx={{ flex: 1, height: '350px' }}>
+                <Card className='announcement-article-card' sx={{ flex: 1, height: '300px' }}>
                     <CardHeader 
                         className='dashboard-card-header'
                         avatar={
@@ -194,7 +242,7 @@ const Dashboard: React.FC = () => {
                         title={<b>공지사항</b>} 
                         action={
                             <IconButton aria-label='settings'>
-                                <MoreVertIcon />
+                                <MoreVertIcon  style={{ color: '#FFF' }}/>
                             </IconButton>
                         }
                     />
@@ -210,7 +258,7 @@ const Dashboard: React.FC = () => {
                     </CardActions>
                 </Card>
 
-                <Card sx={{ flex: 1, height: '350px' }}>
+                <Card className='latest-article-card' sx={{ flex: 1, height: '300px' }}>
                     <CardHeader 
                         className='dashboard-card-header'
                         avatar={
@@ -219,7 +267,7 @@ const Dashboard: React.FC = () => {
                         title={<b>최신글</b>}
                         action={
                             <IconButton aria-label='settings'>
-                                <MoreVertIcon />
+                                <MoreVertIcon style={{ color: '#FFF' }} />
                             </IconButton>
                         }
                     />
@@ -235,7 +283,7 @@ const Dashboard: React.FC = () => {
                     </CardActions>
                 </Card>
 
-                <Card sx={{ flex: 1, height: '350px' }}>
+                <Card className='popular-article-card' sx={{ flex: 1, height: '300px' }}>
                     <CardHeader 
                         className='dashboard-card-header'
                         avatar={
@@ -244,13 +292,182 @@ const Dashboard: React.FC = () => {
                         title={<b>인기글</b>}
                         action={
                             <IconButton aria-label='settings'>
-                                <MoreVertIcon />
+                                <MoreVertIcon style={{ color: '#FFF' }}/>
                             </IconButton>
                         }
                     />
                     <CardContent>
                         <Typography variant="body2" color="text.secondary">
                             인기글 내용이 여기에 표시됩니다.
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <button style={{ background: 'none', border: 'none', color: '#1976d2', cursor: 'pointer' }}>
+                            더보기
+                        </button>
+                    </CardActions>
+                </Card>
+            </div>
+
+            <div className='advertise-banner-section'>
+                {advertiseBanners.map((banner) => (
+                    <div
+                        key={banner.id}
+                        className='advertise-banner'
+                        style={{
+                            width: banner.width,
+                            height: banner.height
+                        }}
+                    >
+                        <img src={banner.image} alt={banner.title} className='advertise-banner-image' />
+                    </div>
+                ))}
+            </div>
+
+            <div className='third-card-section'>
+                <Card sx={{ flex: 1, height: '300px' }}>
+                    <CardHeader 
+                        className='dashboard-card-header'
+                        avatar={
+                            <TbMessageReport style={{ fontSize: 30 }} />
+                        }
+                        title={<b>메뉴1</b>} 
+                        action={
+                            <IconButton aria-label='settings'>
+                                <MoreVertIcon  style={{ color: '#FFF' }}/>
+                            </IconButton>
+                        }
+                    />
+                    <CardContent>
+                        <Typography variant="body2" color="text.secondary">
+                            메뉴1 내용이 여기에 표시됩니다.
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <button style={{ background: 'none', border: 'none', color: '#1976d2', cursor: 'pointer' }}>
+                            더보기
+                        </button>
+                    </CardActions>
+                </Card>
+
+                <Card sx={{ flex: 1, height: '300px' }}>
+                    <CardHeader 
+                        className='dashboard-card-header'
+                        avatar={
+                            <TbMessageReport style={{ fontSize: 30 }} />
+                        }
+                        title={<b>메뉴2</b>} 
+                        action={
+                            <IconButton aria-label='settings'>
+                                <MoreVertIcon  style={{ color: '#FFF' }}/>
+                            </IconButton>
+                        }
+                    />
+                    <CardContent>
+                        <Typography variant="body2" color="text.secondary">
+                            메뉴2 내용이 여기에 표시됩니다.
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <button style={{ background: 'none', border: 'none', color: '#1976d2', cursor: 'pointer' }}>
+                            더보기
+                        </button>
+                    </CardActions>
+                </Card>
+
+                <Card sx={{ flex: 1, height: '300px' }}>
+                    <CardHeader 
+                        className='dashboard-card-header'
+                        avatar={
+                            <TbMessageReport style={{ fontSize: 30 }} />
+                        }
+                        title={<b>메뉴3</b>} 
+                        action={
+                            <IconButton aria-label='settings'>
+                                <MoreVertIcon  style={{ color: '#FFF' }}/>
+                            </IconButton>
+                        }
+                    />
+                    <CardContent>
+                        <Typography variant="body2" color="text.secondary">
+                            메뉴3 내용이 여기에 표시됩니다.
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <button style={{ background: 'none', border: 'none', color: '#1976d2', cursor: 'pointer' }}>
+                            더보기
+                        </button>
+                    </CardActions>
+                </Card>
+            </div>
+
+            <div className='fourth-card-section'>
+                <Card sx={{ flex: 1, height: '300px' }}>
+                    <CardHeader 
+                        className='dashboard-card-header'
+                        avatar={
+                            <TbMessageReport style={{ fontSize: 30 }} />
+                        }
+                        title={<b>메뉴4</b>} 
+                        action={
+                            <IconButton aria-label='settings'>
+                                <MoreVertIcon  style={{ color: '#FFF' }}/>
+                            </IconButton>
+                        }
+                    />
+                    <CardContent>
+                        <Typography variant="body2" color="text.secondary">
+                            메뉴4 내용이 여기에 표시됩니다.
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <button style={{ background: 'none', border: 'none', color: '#1976d2', cursor: 'pointer' }}>
+                            더보기
+                        </button>
+                    </CardActions>
+                </Card>
+
+                <Card sx={{ flex: 1, height: '300px' }}>
+                    <CardHeader 
+                        className='dashboard-card-header'
+                        avatar={
+                            <TbMessageReport style={{ fontSize: 30 }} />
+                        }
+                        title={<b>메뉴5</b>} 
+                        action={
+                            <IconButton aria-label='settings'>
+                                <MoreVertIcon  style={{ color: '#FFF' }}/>
+                            </IconButton>
+                        }
+                    />
+                    <CardContent>
+                        <Typography variant="body2" color="text.secondary">
+                            메뉴5 내용이 여기에 표시됩니다.
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <button style={{ background: 'none', border: 'none', color: '#1976d2', cursor: 'pointer' }}>
+                            더보기
+                        </button>
+                    </CardActions>
+                </Card>
+
+                <Card sx={{ flex: 1, height: '300px' }}>
+                    <CardHeader 
+                        className='dashboard-card-header'
+                        avatar={
+                            <TbMessageReport style={{ fontSize: 30 }} />
+                        }
+                        title={<b>메뉴6</b>} 
+                        action={
+                            <IconButton aria-label='settings'>
+                                <MoreVertIcon  style={{ color: '#FFF' }}/>
+                            </IconButton>
+                        }
+                    />
+                    <CardContent>
+                        <Typography variant="body2" color="text.secondary">
+                            메뉴6 내용이 여기에 표시됩니다.
                         </Typography>
                     </CardContent>
                     <CardActions>
