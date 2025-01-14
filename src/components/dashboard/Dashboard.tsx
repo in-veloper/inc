@@ -198,7 +198,8 @@ const Dashboard: React.FC = () => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        fade: true
+        fade: true,
+        arrows: false
     }
 
     const mediaSliderSettings = {
@@ -209,8 +210,6 @@ const Dashboard: React.FC = () => {
         autoplay: true,
         autoplaySpeed: 3000,
         arrows: true,
-        // nextArrow: <CustomNextArrow />, // 커스텀 오른쪽 화살표
-        // prevArrow: <CustomPrevArrow />, // 커스텀 왼쪽 화살표
         responsive: [
             {
                 breakpoint: 1024,
@@ -601,11 +600,6 @@ const Dashboard: React.FC = () => {
                             label={item.label}
                             variant='outlined'
                             onClick={item.onClick}
-                            sx={{
-                                "&:hover": {
-                                    backgroundColor: '#9E0011'
-                                }
-                            }}
                         />
                     ))}
                 </div>
