@@ -28,6 +28,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { WiDust } from "react-icons/wi";
+import { Chip } from '@mui/material'
 import { useGeoLocation } from '../../util/useGeoLocation'
 import axios from 'axios'
 import weatherDescKo from '../../util/weatherDescKo'
@@ -109,6 +110,7 @@ const advertiseBanners = [
       },
 ]
 
+
 const Dashboard: React.FC = () => {
     const { location, error } = useGeoLocation(geolocationOptions)
     const [weather, setWeather] = useState<Weather | null>(null)
@@ -174,44 +176,20 @@ const Dashboard: React.FC = () => {
         }
     }, [location])
 
-    const CustomNextArrow = (props: any) => {
-        const { className, style, onClick } = props;
-        return (
-            <div
-                className={className}
-                style={{
-                    ...style,
-                    display: "block",
-                    right: "-25px", // 화살표 위치 조정
-                    zIndex: 1,
-                    fontSize: "30px",
-                }}
-                onClick={onClick}
-            >
-                ➡️
-            </div>
-        )
-    }
-    
-    const CustomPrevArrow = (props: any) => {
-        const { className, style, onClick } = props;
-        return (
-            <div
-                className={className}
-                style={{
-                    ...style,
-                    display: "block",
-                    left: "-25px", // 화살표 위치 조정
-                    zIndex: 1,
-                    fontSize: "30px",
-                }}
-                onClick={onClick}
-            >
-                ⬅️
-            </div>
-        )
+    const handleClickMediaChip = () => {
+
     }
 
+    const chipItems = [
+        { id: 1, label: "미디어1", onClick: handleClickMediaChip },
+        { id: 2, label: "미디어2", onClick: handleClickMediaChip },
+        { id: 3, label: "미디어3", onClick: handleClickMediaChip },
+        { id: 4, label: "미디어4", onClick: handleClickMediaChip },
+        { id: 5, label: "미디어5", onClick: handleClickMediaChip },
+        { id: 6, label: "미디어6", onClick: handleClickMediaChip },
+        { id: 7, label: "미디어7", onClick: handleClickMediaChip },
+    ]
+    
     const sliderSettings = {
         dots: true,
         infinite: true,
@@ -614,15 +592,33 @@ const Dashboard: React.FC = () => {
                     </Card>
                 </div>
             </div>
-            <div className='slider-container'>
-                <Slider {...mediaSliderSettings}>
-                    {mediaItems.map((item) => (
-                        <div key={item.id} className='media-item'>
-                            <img src={item.image} alt={item.title} className='media-image' />
-                            <p className='media-title'>{item.title}</p>
-                        </div>
+
+            <div className='media-section'>
+                <div className='media-chips'>
+                    {chipItems.map((item) => (
+                        <Chip 
+                            key={item.id}
+                            label={item.label}
+                            variant='outlined'
+                            onClick={item.onClick}
+                            sx={{
+                                "&:hover": {
+                                    backgroundColor: '#9E0011'
+                                }
+                            }}
+                        />
                     ))}
-                </Slider>
+                </div>
+                <div className='slider-container'>
+                    <Slider {...mediaSliderSettings}>
+                        {mediaItems.map((item) => (
+                            <div key={item.id} className='media-item'>
+                                <img src={item.image} alt={item.title} className='media-image' />
+                                <p className='media-title'>{item.title}</p>
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
             </div>
 
 
