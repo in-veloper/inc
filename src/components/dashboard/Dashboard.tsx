@@ -44,6 +44,9 @@ import GavelIcon from '@mui/icons-material/Gavel'
 import ShortcutIcon from '../../asset/icon/shortcut.png'
 import IssueIcon from '../../asset/icon/issue.png'
 import QuestionAndAnswer from '../../asset/icon/questionandanswer.png'
+import GeneralHealthCheck from '../../asset/icon/generalHealthCheck.png'
+import SpecialHealthCheck from '../../asset/icon/specialHealthCheck.png'
+import SafetyData from '../../asset/icon/safetyData.png'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import './style/dashboard.css'
@@ -84,9 +87,9 @@ const mediaItems = [
 const frequentMenuItems = [
     { id: 1, icon: <img src={IssueIcon} alt='issue' style={{ width: 40 }} />, title: '보건이슈 공유' },
     { id: 2, icon: <img src={QuestionAndAnswer} alt='questionandanswer' style={{ width: 40 }} />, title: '질문과 답변' },
-    { id: 3, icon: <TbMessage2Heart style={{ fontSize: '24px', color: '#FFD700' }} />, title: '일반건강진단' },
-    { id: 4, icon: <TbMessageReport style={{ fontSize: '24px', color: '#FFD700' }} />, title: '특수건강진단' },
-    { id: 5, icon: <TbMessage2Bolt style={{ fontSize: '24px', color: '#FFD700' }} />, title: '안전관련자료' },
+    { id: 3, icon: <img src={GeneralHealthCheck} alt='generalHealthCheck' style={{ width: 40 }} />, title: '일반건강진단' },
+    { id: 4, icon: <img src={SpecialHealthCheck} alt='specialHealthCheck' style={{ width: 40 }} />, title: '특수건강진단' },
+    { id: 5, icon: <img src={SafetyData} alt='safetyData' style={{ width: 40 }} />, title: '안전관련자료' },
     { id: 6, icon: <TbMessage2Heart style={{ fontSize: '24px', color: '#FFD700' }} />, title: '구인왕' },
 ]
 

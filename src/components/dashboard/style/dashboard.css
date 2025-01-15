@@ -391,9 +391,11 @@
 }
 
 .stack-paper:hover .stack-link img {
-    filter: brightness(0) invert(1); /* 아이콘을 흰색으로 변경 */
+    filter: brightness(0) invert(1);
+    width: 20px;
+    margin-bottom: -5px;
 }
 
 .stack-paper:hover .stack-link {
-    color: #FFF; /* 링크 텍스트 색상 변경 */
+    color: #FFF; 
 }
