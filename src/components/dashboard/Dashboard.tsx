@@ -13,32 +13,39 @@ import mediaTest2 from '../../asset/img/media/media_test2.jpg'
 import mediaTest3 from '../../asset/img/media/media_test3.jpg'
 import mediaTest4 from '../../asset/img/media/media_test4.jpeg'
 import mediaTest5 from '../../asset/img/media/media_test5.jpg'
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { WiDust } from "react-icons/wi";
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardMedia from '@mui/material/CardMedia'
+import CardContent from '@mui/material/CardContent'
+import CardActions from '@mui/material/CardActions'
+import Collapse from '@mui/material/Collapse'
+import Avatar from '@mui/material/Avatar'
+import IconButton, { IconButtonProps } from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import { red } from '@mui/material/colors'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import ShareIcon from '@mui/icons-material/Share'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
+import { WiDust } from "react-icons/wi"
 import { Box, Chip, Paper, Stack } from '@mui/material'
 import { useGeoLocation } from '../../util/useGeoLocation'
 import axios from 'axios'
 import weatherDescKo from '../../util/weatherDescKo'
 import { FaLocationArrow } from 'react-icons/fa6'
-import { PiCloudSunDuotone } from "react-icons/pi";
-import { TbMessageReport } from "react-icons/tb";
-import { TbMessage2Bolt } from "react-icons/tb";
-import { TbMessage2Heart } from "react-icons/tb";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { PiCloudSunDuotone } from "react-icons/pi"
+import { TbMessageReport } from "react-icons/tb"
+import { TbMessage2Bolt } from "react-icons/tb"
+import { TbMessage2Heart } from "react-icons/tb"
+import FaceIcon from '@mui/icons-material/Face'
+import LoyaltyIcon from '@mui/icons-material/Loyalty'
+import VaccinesIcon from '@mui/icons-material/Vaccines'
+import GavelIcon from '@mui/icons-material/Gavel'
+import ShortcutIcon from '../../asset/icon/shortcut.png'
+import IssueIcon from '../../asset/icon/issue.png'
+import QuestionAndAnswer from '../../asset/icon/questionandanswer.png'
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 import './style/dashboard.css'
 import { hideBlock, showBlock } from '../../util/blockLoader'
 
@@ -75,12 +82,12 @@ const mediaItems = [
 
 
 const frequentMenuItems = [
-    { id: 1, icon: <TbMessageReport style={{ fontSize: '24px', color: '#FFD700' }} />, title: '회원서비스' },
-    { id: 2, icon: <TbMessage2Bolt style={{ fontSize: '24px', color: '#FFD700' }} />, title: '보건안전센터' },
-    { id: 3, icon: <TbMessage2Heart style={{ fontSize: '24px', color: '#FFD700' }} />, title: '건강안전연구소' },
-    { id: 4, icon: <TbMessageReport style={{ fontSize: '24px', color: '#FFD700' }} />, title: '근로자건강센터' },
-    { id: 5, icon: <TbMessage2Bolt style={{ fontSize: '24px', color: '#FFD700' }} />, title: '직업건강웹진' },
-    { id: 6, icon: <TbMessage2Heart style={{ fontSize: '24px', color: '#FFD700' }} />, title: '온라인문진투고' },
+    { id: 1, icon: <img src={IssueIcon} alt='issue' style={{ width: 40 }} />, title: '보건이슈 공유' },
+    { id: 2, icon: <img src={QuestionAndAnswer} alt='questionandanswer' style={{ width: 40 }} />, title: '질문과 답변' },
+    { id: 3, icon: <TbMessage2Heart style={{ fontSize: '24px', color: '#FFD700' }} />, title: '일반건강진단' },
+    { id: 4, icon: <TbMessageReport style={{ fontSize: '24px', color: '#FFD700' }} />, title: '특수건강진단' },
+    { id: 5, icon: <TbMessage2Bolt style={{ fontSize: '24px', color: '#FFD700' }} />, title: '안전관련자료' },
+    { id: 6, icon: <TbMessage2Heart style={{ fontSize: '24px', color: '#FFD700' }} />, title: '구인왕' },
 ]
 
 const advertiseBanners = [
@@ -191,10 +198,10 @@ const Dashboard: React.FC = () => {
     ]
 
     const stackItems = [
-        { id: 1, text: "일자리 찾기" },
-        { id: 2, text: "짝 찾기" },
-        { id: 3, text: "약품정보 찾기" },
-        { id: 4, text: "관련 법령정보 찾기" }
+        { id: 1, text: "구인왕", icon: <FaceIcon />},
+        { id: 2, text: "썸 WHERE", icon: <LoyaltyIcon /> },
+        { id: 3, text: "약품정보", icon: <VaccinesIcon /> },
+        { id: 4, text: "관련 법령정보", icon: <GavelIcon /> }
     ]
     
     const sliderSettings = {
@@ -290,11 +297,15 @@ const Dashboard: React.FC = () => {
                                 key={item.id}
                                 className='stack-paper'
                             >
-                                <Stack spacing={2} direction="row" sx={{ alignItems: 'center' }}>
-                                    <Typography noWrap sx={{ color: 'black' }}>
-                                        {item.text}
-                                    </Typography>
+                                <Stack spacing={2} direction="row" className='stack-item'>
+                                    <div className='stack-text'>
+                                        <span className='stack-icon'>{item.icon}</span>
+                                        <span className='stack-span'>{item.text}</span>
+                                    </div>
                                 </Stack>
+                                <span className='stack-link'>
+                                    <img src={ShortcutIcon} alt='shortcut' />
+                                </span>
                           </Paper>
                         ))}
                     </Box>
