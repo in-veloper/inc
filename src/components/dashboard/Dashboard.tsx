@@ -28,7 +28,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { WiDust } from "react-icons/wi";
-import { Chip } from '@mui/material'
+import { Box, Chip, Paper, Stack } from '@mui/material'
 import { useGeoLocation } from '../../util/useGeoLocation'
 import axios from 'axios'
 import weatherDescKo from '../../util/weatherDescKo'
@@ -189,6 +189,13 @@ const Dashboard: React.FC = () => {
         { id: 6, label: "미디어6", onClick: handleClickMediaChip },
         { id: 7, label: "미디어7", onClick: handleClickMediaChip },
     ]
+
+    const stackItems = [
+        { id: 1, text: "일자리 찾기" },
+        { id: 2, text: "짝 찾기" },
+        { id: 3, text: "약품정보 찾기" },
+        { id: 4, text: "관련 법령정보 찾기" }
+    ]
     
     const sliderSettings = {
         dots: true,
@@ -239,8 +246,9 @@ const Dashboard: React.FC = () => {
                     </Slider>
 
                 </div>
+
                 <div className='weather-card'>
-                    <Card className='weather-block' sx={{ width: '300px', height: '300px' }}>
+                    <Card className='weather-block'>
                         <CardHeader 
                             className='dashboard-card-header'
                             avatar={
@@ -273,6 +281,23 @@ const Dashboard: React.FC = () => {
                             </div>
                         </CardContent>
                     </Card>
+                </div>
+
+                <div className='stack-section'>
+                    <Box className="stack-box">
+                        {stackItems.map((item, index) => (
+                            <Paper
+                                key={item.id}
+                                className='stack-paper'
+                            >
+                                <Stack spacing={2} direction="row" sx={{ alignItems: 'center' }}>
+                                    <Typography noWrap sx={{ color: 'black' }}>
+                                        {item.text}
+                                    </Typography>
+                                </Stack>
+                          </Paper>
+                        ))}
+                    </Box>
                 </div>
             </div>
 
