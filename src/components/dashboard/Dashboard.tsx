@@ -13,22 +13,9 @@ import mediaTest2 from '../../asset/img/media/media_test2.jpg'
 import mediaTest3 from '../../asset/img/media/media_test3.jpg'
 import mediaTest4 from '../../asset/img/media/media_test4.jpeg'
 import mediaTest5 from '../../asset/img/media/media_test5.jpg'
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardMedia from '@mui/material/CardMedia'
-import CardContent from '@mui/material/CardContent'
-import CardActions from '@mui/material/CardActions'
-import Collapse from '@mui/material/Collapse'
-import Avatar from '@mui/material/Avatar'
-import IconButton, { IconButtonProps } from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import { red } from '@mui/material/colors'
-import FavoriteIcon from '@mui/icons-material/Favorite'
-import ShareIcon from '@mui/icons-material/Share'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import IconButton from '@mui/material/IconButton'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
-import { WiDust } from "react-icons/wi"
-import { Box, Chip, Paper, Stack } from '@mui/material'
+import { Box, Chip, Paper, Stack, Typography, Card, CardContent, CardHeader, CardActions, List, ListItem, Badge } from '@mui/material'
 import { useGeoLocation } from '../../util/useGeoLocation'
 import axios from 'axios'
 import weatherDescKo from '../../util/weatherDescKo'
@@ -37,10 +24,12 @@ import { PiCloudSunDuotone } from "react-icons/pi"
 import { TbMessageReport } from "react-icons/tb"
 import { TbMessage2Bolt } from "react-icons/tb"
 import { TbMessage2Heart } from "react-icons/tb"
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FaceIcon from '@mui/icons-material/Face'
 import LoyaltyIcon from '@mui/icons-material/Loyalty'
 import VaccinesIcon from '@mui/icons-material/Vaccines'
 import GavelIcon from '@mui/icons-material/Gavel'
+import TextsmsIcon from '@mui/icons-material/Textsms';
 import ShortcutIcon from '../../asset/icon/shortcut.png'
 import IssueIcon from '../../asset/icon/issue.png'
 import QuestionAndAnswer from '../../asset/icon/questionandanswer.png'
@@ -90,7 +79,7 @@ const frequentMenuItems = [
     { id: 3, icon: <img src={GeneralHealthCheck} alt='generalHealthCheck' style={{ width: 40 }} />, title: '일반건강진단' },
     { id: 4, icon: <img src={SpecialHealthCheck} alt='specialHealthCheck' style={{ width: 40 }} />, title: '특수건강진단' },
     { id: 5, icon: <img src={SafetyData} alt='safetyData' style={{ width: 40 }} />, title: '안전관련자료' },
-    { id: 6, icon: <TbMessage2Heart style={{ fontSize: '24px', color: '#FFD700' }} />, title: '구인왕' },
+    { id: 6, icon: <TbMessage2Heart style={{ fontSize: '24px', color: '#FFD700' }} />, title: '구직왕' },
 ]
 
 const advertiseBanners = [
@@ -120,6 +109,21 @@ const advertiseBanners = [
       },
 ]
 
+const announcementItems = [
+    { title: '공지사항 제목 1', date: '2025.01.16' },
+    { title: '공지사항 제목 2', date: '2025.01.11' },
+    { title: '공지사항 제목 3', date: '2025.01.10' },
+    { title: '공지사항 제목 4', date: '2025.01.16' },
+    { title: '공지사항 제목 5', date: '2025.01.17' },
+]
+
+const latestArticles = [
+    { menuName: '보건이슈 공유', title: '학회 이슈 공유', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'number1', commentCount: 1 },
+    { menuName: '질문과 답변', title: 'Material-UI 커스터마이징', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'yiniwini', commentCount: 3 },
+    { menuName: '일반건강진단', title: '1차 일반건강진단', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'admin', commentCount: 5 },
+    { menuName: '특수건강진단', title: 'Material-UI 커스터마이징', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'admin' },
+    { menuName: '안전관련자료', title: '안전관련자료', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'admin', commentCount: 7 },
+]
 
 const Dashboard: React.FC = () => {
     const { location, error } = useGeoLocation(geolocationOptions)
@@ -201,7 +205,7 @@ const Dashboard: React.FC = () => {
     ]
 
     const stackItems = [
-        { id: 1, text: "구인왕", icon: <FaceIcon />},
+        { id: 1, text: "구직왕", icon: <FaceIcon />},
         { id: 2, text: "썸 WHERE", icon: <LoyaltyIcon /> },
         { id: 3, text: "약품정보", icon: <VaccinesIcon /> },
         { id: 4, text: "관련 법령정보", icon: <GavelIcon /> }
@@ -339,16 +343,25 @@ const Dashboard: React.FC = () => {
                             </IconButton>
                         }
                     />
-                    <CardContent>
-                        <Typography variant="body2" color="text.secondary">
-                            공지사항 내용이 여기에 표시됩니다.
-                        </Typography>
+                    <CardContent className='announcement-content'>
+                        <List>
+                            {announcementItems.map((announcement, index) => (
+                                <div
+                                    key={index}
+                                    className='announcement-item'
+                                >
+                                    <Box>
+                                        <Typography variant='body1' fontWeight="bold" fontSize="14px">
+                                            {announcement.title}
+                                        </Typography>
+                                    </Box>
+                                    <Typography variant='body2' color='text.secondary'>
+                                        {announcement.date}
+                                    </Typography>
+                                </div>
+                            ))}
+                        </List>
                     </CardContent>
-                    <CardActions>
-                        <button style={{ background: 'none', border: 'none', color: '#1976d2', cursor: 'pointer' }}>
-                            더보기
-                        </button>
-                    </CardActions>
                 </Card>
 
                 <Card className='latest-article-card' sx={{ flex: 1, height: '250px' }}>
@@ -364,16 +377,41 @@ const Dashboard: React.FC = () => {
                             </IconButton>
                         }
                     />
-                    <CardContent>
-                        <Typography variant="body2" color="text.secondary">
-                            최신글 내용이 여기에 표시됩니다.
-                        </Typography>
+                    <CardContent className='latest-article-content'>
+                        <List>
+                            {latestArticles.map((article, index) => (
+                                <div
+                                    key={index}
+                                    className='latest-article-item'
+                                >
+                                    <div className='latest-article-left'>
+                                        <Chip className='latest-article-menu' label={article.menuName} />
+                                        <Typography className='latest-article-title'>{article.title}</Typography>
+                                        {article.commentCount && (
+                                            <Badge 
+                                                badgeContent={article.commentCount} 
+                                                color='primary' 
+                                                sx={{ 
+                                                    '& .MuiBadge-badge': {
+                                                        minWidth: '16px', 
+                                                        height: '16px',   
+                                                        fontSize: '10px', 
+                                                        padding: '0 4px', 
+                                                    }
+                                                }}
+                                            >
+                                                <TextsmsIcon color='action' sx={{ width: 20, marginLeft: 1 }} />
+                                            </Badge>
+                                        )}
+                                    </div>
+                                    <div className='latest-article-right'>
+                                        {article.avatar}
+                                        <Typography className='latest-article-nickname'>{article.nickName}</Typography>
+                                    </div>
+                                </div>
+                            ))}
+                        </List>
                     </CardContent>
-                    <CardActions>
-                        <button style={{ background: 'none', border: 'none', color: '#1976d2', cursor: 'pointer' }}>
-                            더보기
-                        </button>
-                    </CardActions>
                 </Card>
 
                 <Card className='popular-article-card' sx={{ flex: 1, height: '250px' }}>
