@@ -35,6 +35,7 @@ import IssueIcon from '../../asset/icon/issue.png'
 import QuestionAndAnswer from '../../asset/icon/questionandanswer.png'
 import GeneralHealthCheck from '../../asset/icon/generalHealthCheck.png'
 import SpecialHealthCheck from '../../asset/icon/specialHealthCheck.png'
+import Job from '../../asset/icon/job.png'
 import SafetyData from '../../asset/icon/safetyData.png'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -79,7 +80,7 @@ const frequentMenuItems = [
     { id: 3, icon: <img src={GeneralHealthCheck} alt='generalHealthCheck' style={{ width: 40 }} />, title: '일반건강진단' },
     { id: 4, icon: <img src={SpecialHealthCheck} alt='specialHealthCheck' style={{ width: 40 }} />, title: '특수건강진단' },
     { id: 5, icon: <img src={SafetyData} alt='safetyData' style={{ width: 40 }} />, title: '안전관련자료' },
-    { id: 6, icon: <TbMessage2Heart style={{ fontSize: '24px', color: '#FFD700' }} />, title: '구직왕' },
+    { id: 6, icon: <img src={Job} alt='job' style={{ width: 40 }} />, title: '구직왕' },
 ]
 
 const advertiseBanners = [
@@ -123,6 +124,14 @@ const latestArticles = [
     { menuName: '일반건강진단', title: '1차 일반건강진단', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'admin', commentCount: 5 },
     { menuName: '특수건강진단', title: 'Material-UI 커스터마이징', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'admin' },
     { menuName: '안전관련자료', title: '안전관련자료', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'admin', commentCount: 7 },
+]
+
+const popularArticles = [
+    { menuName: '질문과 답변', title: 'Material-UI 커스터마이징', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'yiniwini', commentCount: 3 },
+    { menuName: '일반건강진단', title: '1차 일반건강진단', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'admin', commentCount: 5 },
+    { menuName: '특수건강진단', title: 'Material-UI 커스터마이징', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'admin' },
+    { menuName: '안전관련자료', title: '안전관련자료', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'admin', commentCount: 7 },
+    { menuName: '보건이슈 공유', title: '학회 이슈 공유', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'number1', commentCount: 1 },
 ]
 
 const Dashboard: React.FC = () => {
@@ -427,16 +436,41 @@ const Dashboard: React.FC = () => {
                             </IconButton>
                         }
                     />
-                    <CardContent>
-                        <Typography variant="body2" color="text.secondary">
-                            인기글 내용이 여기에 표시됩니다.
-                        </Typography>
+                    <CardContent className='popular-article-content'>
+                        <List>
+                            {popularArticles.map((article, index) => (
+                                <div
+                                    key={index}
+                                    className='popular-article-item'
+                                >
+                                    <div className='popular-article-left'>
+                                        <Chip className='popular-article-menu' label={article.menuName} />
+                                        <Typography className='popular-article-title'>{article.title}</Typography>
+                                        {article.commentCount && (
+                                            <Badge 
+                                                badgeContent={article.commentCount} 
+                                                color='primary' 
+                                                sx={{ 
+                                                    '& .MuiBadge-badge': {
+                                                        minWidth: '16px', 
+                                                        height: '16px',   
+                                                        fontSize: '10px', 
+                                                        padding: '0 4px', 
+                                                    }
+                                                }}
+                                            >
+                                                <TextsmsIcon color='action' sx={{ width: 20, marginLeft: 1 }} />
+                                            </Badge>
+                                        )}
+                                    </div>
+                                    <div className='popular-article-right'>
+                                        {article.avatar}
+                                        <Typography className='popular-article-nickname'>{article.nickName}</Typography>
+                                    </div>
+                                </div>
+                            ))}
+                        </List>
                     </CardContent>
-                    <CardActions>
-                        <button style={{ background: 'none', border: 'none', color: '#1976d2', cursor: 'pointer' }}>
-                            더보기
-                        </button>
-                    </CardActions>
                 </Card>
             </div>
 
@@ -447,7 +481,7 @@ const Dashboard: React.FC = () => {
                         className='advertise-banner'
                         style={{
                             width: banner.width,
-                            height: banner.height
+                            height: banner.height,
                         }}
                     >
                         <img src={banner.image} alt={banner.title} className='advertise-banner-image' />
