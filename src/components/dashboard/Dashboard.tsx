@@ -399,13 +399,14 @@ const Dashboard: React.FC = () => {
                                         {article.commentCount && (
                                             <Badge 
                                                 badgeContent={article.commentCount} 
-                                                color='primary' 
                                                 sx={{ 
                                                     '& .MuiBadge-badge': {
                                                         minWidth: '16px', 
                                                         height: '16px',   
                                                         fontSize: '10px', 
                                                         padding: '0 4px', 
+                                                        backgroundColor: '#E2E2E2',
+                                                        color: '#000'
                                                     }
                                                 }}
                                             >
@@ -449,13 +450,15 @@ const Dashboard: React.FC = () => {
                                         {article.commentCount && (
                                             <Badge 
                                                 badgeContent={article.commentCount} 
-                                                color='primary' 
+                                                // color='primary' 
                                                 sx={{ 
                                                     '& .MuiBadge-badge': {
                                                         minWidth: '16px', 
                                                         height: '16px',   
                                                         fontSize: '10px', 
                                                         padding: '0 4px', 
+                                                        backgroundColor: '#E2E2E2',
+                                                        color: '#000'
                                                     }
                                                 }}
                                             >
