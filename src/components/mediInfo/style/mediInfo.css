@@ -12,9 +12,9 @@
 }
 
 .search-shape img, .search-color img, .search-formulation img, .search-dividing img {
-    max-width: 100%;            /* 이미지의 최대 너비를 설정하여 셀에 맞춥니다. */
-    max-height: 100%;           /* 이미지의 최대 높이를 설정하여 셀에 맞춥니다. */
-    height: 20px;               /* 이미지의 너비를 자동으로 설정하여 가로 비율을 유지합니다. */
+    max-width: 100%;            
+    max-height: 100%;           
+    height: 20px;               
     width: 30px;
     display: block;
     margin: 0 auto;
@@ -22,13 +22,91 @@
 
 .search-shape tbody tr td, .search-color tbody tr td, .search-formulation tbody tr td, .search-dividing tbody tr td {
     background-color: #FFFFFF;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 50px !important;     /* 셀의 너비를 설정합니다. */
+    padding: 0;
+    margin: 0;
 }
 
-.search-shape tbody tr td span, .search-color tbody tr td span, .search-formulation tbody tr td span, .search-dividing tbody tr td span {
-    font-size: 12px;
-    padding-top: 0px;
+.shape-title-cell {
+    width: 60px !important;
+    border: 1px solid #DDD;
+    text-align: center !important;
+    font-weight: bold !important;
 }
- 
+
+.color-title-cell {
+    width: 60px !important;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    text-align: center !important;
+    font-weight: bold !important;
+}
+
+.formulation-title-cell {
+    width: 60px !important;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    text-align: center !important;
+    font-weight: bold !important;
+}
+
+.dividing-title-cell {
+    width: 60px !important;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    text-align: center !important;
+    font-weight: bold !important;
+}
+
+.shape-cell {
+    width: 78.3px;
+    border: 1px solid #DDD;
+    text-align: center !important;
+    cursor: pointer;
+}
+
+.color-cell {
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    text-align: center !important;
+    cursor: pointer;
+}
+
+.color-cell:hover {
+    background-color: #F7F7F7;
+}
+
+.formulation-cell {
+    width: 78.3px;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    text-align: center !important;
+    cursor: pointer;
+}
+
+.dividing-cell {
+    width: 78.3px;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    text-align: center !important;
+    cursor: pointer;
+}
+
+.shape-empty-cell {
+    border: 1px solid #DDD;
+    background-color: #F9F9F9 !important;
+    text-align: center;
+}
+
+.formulation-empty-cell {
+    background-color: #F9F9F9 !important;
+    text-align: center;
+    border-right: 1px solid #DDD;
+}
+
+.dividing-empty-cell {
+    background-color: #F9F9F9 !important;
+    text-align: center;
+    border-right: 1px solid #DDD;
+}

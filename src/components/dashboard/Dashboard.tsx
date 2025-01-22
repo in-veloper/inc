@@ -75,11 +75,11 @@ const mediaItems = [
 
 
 const frequentMenuItems = [
-    { id: 1, icon: <img src={IssueIcon} alt='issue' style={{ width: 40 }} />, title: '보건이슈 공유' },
+    { id: 1, icon: <img src={IssueIcon} alt='issue' style={{ width: 40, paddingLeft: 7 }} />, title: '보건이슈 공유' },
     { id: 2, icon: <img src={QuestionAndAnswer} alt='questionandanswer' style={{ width: 40 }} />, title: '질문과 답변' },
-    { id: 3, icon: <img src={GeneralHealthCheck} alt='generalHealthCheck' style={{ width: 40 }} />, title: '일반건강진단' },
-    { id: 4, icon: <img src={SpecialHealthCheck} alt='specialHealthCheck' style={{ width: 40 }} />, title: '특수건강진단' },
-    { id: 5, icon: <img src={SafetyData} alt='safetyData' style={{ width: 40 }} />, title: '안전관련자료' },
+    { id: 3, icon: <img src={GeneralHealthCheck} alt='generalHealthCheck' style={{ width: 40, paddingLeft: 7 }} />, title: '일반건강진단' },
+    { id: 4, icon: <img src={SpecialHealthCheck} alt='specialHealthCheck' style={{ width: 40, paddingLeft: 5 }} />, title: '특수건강진단' },
+    { id: 5, icon: <img src={SafetyData} alt='safetyData' style={{ width: 40, paddingLeft: 3 }} />, title: '안전관련자료' },
     { id: 6, icon: <img src={Job} alt='job' style={{ width: 40 }} />, title: '구직왕' },
 ]
 

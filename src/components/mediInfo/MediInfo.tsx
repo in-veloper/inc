@@ -4,7 +4,7 @@ import { ColDef } from 'ag-grid-community'
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
 import { ClientSideRowModelModule, PaginationModule, TextFilterModule, NumberFilterModule, ValidationModule, TooltipModule } from 'ag-grid-community'
-import { Input, Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter, ListGroup, ListGroupItem, CardImg, Table, Popover, PopoverBody, PopoverHeader } from "reactstrap";
+import { Input, Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter, ListGroup, ListGroupItem, CardImg, Popover, PopoverBody, PopoverHeader } from "reactstrap";
 import Circle from "../../asset/img/medicine/circle.png";
 import Oval from "../../asset/img/medicine/oval.png";
 import SemiCircular from "../../asset/img/medicine/semicircular.png";
@@ -23,8 +23,9 @@ import None from "../../asset/img/medicine/none.png";
 import Minus from "../../asset/img/medicine/minus.png";
 import Plus from "../../asset/img/medicine/plus.png";
 import Etc from "../../asset/img/medicine/etc.png";
-import './style/mediInfo.css'
 import SidebarMenu from '../common/SidebarMenu'
+import './style/mediInfo.css'
+import { Box, Table, TableBody, TableCell, TableRow, Typography } from '@mui/material'
 
 const MediInfo: React.FC = () => {
     const rowData = [
@@ -129,76 +130,121 @@ const MediInfo: React.FC = () => {
             <SidebarMenu />
             <div className='mediInfo-container'>
                 <div className="content" style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Row style={{ flex: '1 1 auto' }}>
-                        <Col md="7">
-                            <Table bordered className="text-center search-shape mb-1" style={{ width: 'auto' }}>
-                                <tbody>
-                                    <tr>
-                                    <td className="align-items-center justify-content-center fixed-width-cell selected-cell" onClick={(e) => handleEntireCellClick(e, 'shape')}>
-                                        <span style={{ fontSize: 12 }}>모양<br/>전체</span>
-                                    </td>
-                                    {shapes.map((shape, index) => (
-                                        <td key={index} onClick={(e) => handleCellClick(e, 'shape', shape.label)}>
-                                        <img src={shape.image} alt={shape.label} />
-                                        <span>{shape.label}</span>
-                                        </td>
-                                    ))}
-                                    </tr>
-                                </tbody>
+                    <Box style={{ flex: '1 1 auto' }}>
+                        <Box>
+                            <Table className='search-shape'>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell
+                                            className='shape-title-cell'
+                                        >
+                                            모양<br/>전체
+                                        </TableCell>
+                                        {shapes.map((shape, index) => (
+                                            <TableCell
+                                                className='shape-cell'
+                                                key={index}
+                                            >
+                                                <img 
+                                                    src={shape.image}
+                                                    alt={shape.label}
+                                                />
+                                                <Typography variant="caption">{shape.label}</Typography>
+                                            </TableCell>
+                                        ))}
+                                        {shapes.length < colors.length && (
+                                            <TableCell
+                                                className='shape-empty-cell'
+                                                colSpan={colors.length - shapes.length}
+                                            />
+                                        )}
+                                    </TableRow>
+                                </TableBody>
                             </Table>
-                            <Table bordered className="text-center search-color mb-1" style={{ width: 'auto' }}>
-                                <tbody>
-                                    <tr>
-                                    <td className="align-items-center justify-content-center fixed-width-cell selected-cell"  onClick={(e) => handleEntireCellClick(e, 'color')}>
-                                        <span style={{ fontSize: 12 }}>색상<br/>전체</span>
-                                    </td>
-                                    {colors.map((color, index) => (
-                                        <td className="text-center" key={index} onClick={(e) => handleCellClick(e, 'color', color.label)}>
-                                        <div className="d-flex justify-content-center mb-1" style={{ marginTop: -5 }}>
-                                            <div style={{ border: '0.5px solid lightgrey', borderRadius: 10, height: 12, width: 12, backgroundColor: color.color }}></div>
-                                        </div>
-                                        <div style={{ marginBottom: -9 }}>
-                                            <span>{color.label}</span>
-                                        </div>
-                                        </td>
-                                    ))}
-                                    </tr>
-                                </tbody>
+                            <Table className='search-color'>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell
+                                            className='color-title-cell'
+                                        >
+                                            색상<br/>전체
+                                        </TableCell>
+                                        {colors.map((color, index) => (
+                                            <TableCell
+                                                className='color-cell'
+                                                key={index}
+                                            >
+                                                <div className="d-flex justify-content-center mb-1" style={{ marginTop: 5, justifyContent: 'center', display: 'flex' }}>
+                                                    <div style={{ border: '0.5px solid lightgrey', borderRadius: 10, height: 12, width: 12, backgroundColor: color.color }}></div>
+                                                </div>
+                                                <Typography variant="caption">{color.label}</Typography>
+                                            </TableCell>
+                                        ))}
+                                    </TableRow>
+                                </TableBody>
                             </Table>
                             <Row className="d-flex no-gutters">
-                                <Table bordered className="text-center search-formulation" style={{ width: 'auto', }}>
-                                    <tbody>
-                                        <tr>
-                                            <td className="align-items-center justify-content-center fixed-width-cell selected-cell" onClick={(e) => handleEntireCellClick(e, 'formulation')}>
-                                            <span style={{ fontSize: 12 }}>제형<br/>전체</span>
-                                            </td>
-                                            {formulation.map((formulation, index) => (
-                                            <td key={index} onClick={(e) => handleCellClick(e, 'formulation', formulation.label)}>
-                                                <img src={formulation.image} alt={formulation.label} />
-                                                <span>{formulation.label}</span>
-                                            </td>
+                                <Table className='search-formulation'>
+                                    <TableBody>
+                                        <TableRow>
+                                            <TableCell
+                                                className='formulation-title-cell'
+                                            >
+                                                제형<br/>전체
+                                            </TableCell>
+                                            {formulation.map((formula, index) => (
+                                                <TableCell
+                                                    className='formulation-cell'
+                                                    key={index}
+                                                >
+                                                    <img 
+                                                        src={formula.image}
+                                                        alt={formula.label}
+                                                    />
+                                                    <Typography variant="caption">{formula.label}</Typography>
+                                                </TableCell>
                                             ))}
-                                        </tr>
-                                    </tbody>
+                                            {formulation.length < colors.length && (
+                                                <TableCell
+                                                    className='formulation-empty-cell'
+                                                    colSpan={colors.length - formulation.length}
+                                                />
+                                            )}
+                                        </TableRow>
+                                    </TableBody>
                                 </Table>
-                                <Table bordered className="text-center search-dividing ml-5" style={{ width: 'auto' }}>
-                                    <tbody>
-                                        <tr>
-                                            <td className="align-items-center justify-content-center fixed-width-cell selected-cell" onClick={(e) => handleEntireCellClick(e, 'dividing')}>
-                                                <span style={{ fontSize: 12 }}>분할선<br/>전체</span>
-                                            </td>
-                                            {dividing.map((dividing, index) => (
-                                            <td key={index} onClick={(e) => handleCellClick(e, 'dividing', dividing.label)}>
-                                                <img src={dividing.image} alt={dividing.label} />
-                                                <span>{dividing.label}</span>
-                                            </td>
+                                <Table className='search-dividing'>
+                                    <TableBody>
+                                        <TableRow>
+                                            <TableCell
+                                                className='dividing-title-cell'
+                                            >
+                                                분할선<br/>전체
+                                            </TableCell>
+                                            {dividing.map((divide, index) => (
+                                                <TableCell
+                                                    className='dividing-cell'
+                                                    key={index}
+                                                >
+                                                    <img 
+                                                        src={divide.image}
+                                                        alt={divide.label}
+                                                    />
+                                                    <Typography variant="caption">{divide.label}</Typography>
+                                                </TableCell>
                                             ))}
-                                        </tr>
-                                    </tbody>
+                                            {dividing.length < colors.length && (
+                                                <TableCell
+                                                    className='dividing-empty-cell'
+                                                    colSpan={colors.length - dividing.length}
+                                                />
+                                            )}
+                                        </TableRow>
+                                    </TableBody>
                                 </Table>
                             </Row>
-                        </Col>
-                        <Col md="5">
+                        </Box>
+                        <Box sx={{ marginTop: 5}}>
                             <Row className="justify-content-end no-gutters mt-3">
                                 <Input
                                     className="ml-3 mr-2"
@@ -238,9 +284,9 @@ const MediInfo: React.FC = () => {
                                 <Button className="ml-2" onClick={searchByMedicineShape}>약 모양으로 검색</Button>
                                 <Button className="ml-1" style={{ height: '38px' }} onClick={resetSearchByMedicineShape}>초기화</Button>
                             </Row>
-                        </Col>
-                    </Row>
-                    <Row style={{ flex: '1 1 auto' }}>
+                        </Box>
+                    </Box>
+                    <Box style={{ flex: '1 1 auto' }}>
                         <Col md="12">
                             <div className='ag-theme-alpine' style={{ height: '100vh', minHeight: '60vh', maxHeight: '60vh' }}>
                                 <AgGridReact
@@ -255,7 +301,7 @@ const MediInfo: React.FC = () => {
                                 />
                             </div>
                         </Col>
-                    </Row>
+                    </Box>
                 </div>
             </div>
         </div>

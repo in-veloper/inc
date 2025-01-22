@@ -1,6 +1,7 @@
-import { Divider, ListItemText, MenuItem, MenuList, Paper } from "@mui/material"
+import { Divider, ListItemText, MenuItem, MenuList, Paper, Typography } from "@mui/material"
 import { useLocation, Link } from "react-router-dom"
 import { menuItems } from "../../consts/MenuItems"
+import './style/sidebarMenu.css'
 
 const SidebarMenu = () => {
     const location = useLocation()
@@ -12,13 +13,27 @@ const SidebarMenu = () => {
     if(!activeMainMenu) return null
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <Paper sx={{ width: 220, marginRight: 5 }}>
+        <div className="sidebar-menu">
+            <Paper className="sidebar-paper">
                 <MenuList>
-                    <MenuItem>
+                    <MenuItem
+                        disableRipple
+                        sx={{
+                            cursor: 'default',
+                            '&:hover': {
+                                backgroundColor: 'transparent'
+                            }
+                        }}
+                    >
                         <ListItemText 
-                            primary={activeMainMenu.title}
-                            primaryTypographyProps={{ fontWeight: 'bold', fontSize: '16px' }}
+                            primary={
+                                <Typography
+                                    variant="body1"
+                                    className="sidebar-list-item-text"
+                                >
+                                    {activeMainMenu.title}
+                                </Typography>
+                            }
                         />
                     </MenuItem>
                     <Divider />
@@ -36,9 +51,12 @@ const SidebarMenu = () => {
                                     opacity: 0.8,
                                     color: '#FFF',
                                     '&:hover': {
-                                        backgroundColor: '#7C0011'
+                                        backgroundColor: '#9E0011'
                                     }
-                                }
+                                },
+                                // '&:hover': {
+                                //     backgroundColor: '#7C0011'
+                                // }
                             }}
                         >
                             <ListItemText>{subItem.title}</ListItemText>

@@ -12,7 +12,7 @@
 
 .carousel-section {
     width: 700px;
-    flex: 1;
+    flex: 2;
 }
 
 .carousel-item {
@@ -25,7 +25,6 @@
 
 .carousel-image {
     width: 100%;
-    max-width: 700px;
     height: 300px;
     border-radius: 3px;
     margin: 0 auto 20px;
@@ -185,6 +184,10 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+}
+
+.frequent-menu-icon:hover {
+    background-color: #E2E2E2;
 }
 
 .frequent-menu-title {
@@ -348,7 +351,7 @@
     padding: 16px;
     background-color: #FFF;
     color: #000;
-    width: 300px;
+    width: 96%;
     border: 1px solid #E0E0E0;
     cursor: pointer;
 }
@@ -419,7 +422,7 @@
 }
 
 .announcement-item:hover {
-    background-color: lightgray;
+    background-color: #F7F7F7;
 }
 
 .latest-article-content {
@@ -440,7 +443,7 @@
 }
 
 .latest-article-item:hover {
-    background-color: lightgray;
+    background-color: #F7F7F7;
 }
 
 .latest-article-left {
@@ -504,7 +507,7 @@
 }
 
 .popular-article-item:hover {
-    background-color: lightgray;
+    background-color: #F7F7F7;
 }
 
 .popular-article-left {
