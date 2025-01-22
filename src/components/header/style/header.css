@@ -229,3 +229,8 @@
     color: #9E0011;
     font-weight: bold;
 }
+
+.header-search-all {
+    color: #9E0011;
+    cursor: pointer;
+}

@@ -1,4 +1,12 @@
+.mediInfo {
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 50px;
+    display: flex;
+}
+
 .mediInfo-container {
+    flex: 1;
     height: 100vh;
     box-sizing: border-box;
 }

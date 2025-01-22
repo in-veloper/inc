@@ -549,3 +549,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.humidity-percent {
+    font-size: 17px;
+}

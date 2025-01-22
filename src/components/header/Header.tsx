@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useGeoLocation } from '../../util/useGeoLocation'
-import { IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import { InputAdornment, TextField, Typography } from "@mui/material";
 import weatherDescKo from '../../util/weatherDescKo'
 import axios from 'axios'
 import { FaLocationArrow } from 'react-icons/fa6'
@@ -112,7 +112,7 @@ const Header: React.FC = () => {
                                 key={index}
                                 className='menu-item'
                             >
-                                <Link to="#" className='menu-link'>
+                                <Link to={menu.path} className='menu-link'>
                                     {menu.title}
                                 </Link>
                             </div>
@@ -127,8 +127,8 @@ const Header: React.FC = () => {
                                             {menu.title}
                                         </Typography>
                                         {menu.subItems.map((subItem, subIndex) => (
-                                            <Link key={subIndex} to="#" className="dropdown-item">
-                                                {subItem}
+                                            <Link key={subIndex} to={menu.path} className="dropdown-item">
+                                                {subItem.title}
                                             </Link>
                                         ))}
                                     </div>
@@ -153,7 +153,7 @@ const Header: React.FC = () => {
                         input: {
                             endAdornment: (
                                 <InputAdornment position='end'>
-                                    <FaSearch style={{ color: "#9E0011"}} />
+                                    <FaSearch className='header-search-all' />
                                 </InputAdornment>
                             )
                         }

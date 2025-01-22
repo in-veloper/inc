@@ -291,10 +291,10 @@ const Dashboard: React.FC = () => {
                                 <div className='weather-text'>
                                     <div className='weather-main'>
                                         <div>
-                                            <span><b className='dashboard-temp-text'>온도</b> <span className='temp-feature'>{weather?.temp}</span></span>
+                                            <span><b className='dashboard-temp-text'>온도</b> <span className='temp-feature'>{weather?.temp}°</span></span>
                                         </div>
                                         <div>
-                                            <span><b className='dashboard-humidity-text'>습도</b> <span className='humidity-feature'>{weather?.humidity}</span></span>
+                                            <span><b className='dashboard-humidity-text'>습도</b> <span className='humidity-feature'>{weather?.humidity}<span className='humidity-percent'>%</span></span></span>
                                         </div>
                                     </div>
                                     <div className='dashboard-weather-description'>

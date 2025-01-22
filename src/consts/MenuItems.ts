@@ -4,7 +4,11 @@ export const menuItems = [
         title: '보건 이슈 공유', 
         description: '보건 관련 이슈 공유', 
         path: '',
-        subItems: ["공지사항", "인사말", "참여보건"]
+        subItems: [
+            {title: "공지사항", path: ''}, 
+            {title: "인사말", path: ''}, 
+            {title: "참여보건", path: ''}
+        ]
 
     },
     { 
@@ -12,48 +16,71 @@ export const menuItems = [
         title: '교육 자료 공유', 
         description: '공문 및 교육 관련 자료 공유', 
         path: '',
-        subItems: ["연구논문", "대학원"] 
+        subItems: [
+            {title: "연구논문", path: ''}, 
+            {title: "대학원", path: ''}
+        ] 
     },
     { 
         id: 3, 
         title: '건강진단', 
         description: '일반건강진단 및 특수건강진단', 
         path: '',
-        subItems: ["보건발언대", "보건Q&A", "구인구직"] 
+        subItems: [
+            {title: "보건발언대", path: ''},
+            {title: "보건Q&A", path: ''},
+            {title: "구인구직", path: ''}
+        ] 
     },
     { 
         id: 4, 
         title: '작업환경측정', 
         description: '작업환경측정 관련 공유', 
         path: '',
-        subItems: ["상품리뷰", "의약품 Q&A"]
+        subItems: [
+            {title: "상품리뷰", path: ''},
+            {title: "의약품 Q&A", path: ''}
+        ]
     },
     { 
         id: 5, 
         title: '의료 및 약품 정보', 
         description: '의료 및 약품에 대한 상세 정보', 
         path: '/medi-info',
-        subItems: ["성과건강", "응급안전"]
+        subItems: [
+            {title: "약품정보", path: '/medi-info'}, 
+            {title: "성과건강", path: ''}
+        ]
     },
     { 
         id: 6, 
         title: '보건업무 메뉴얼', 
         description: '보건업무 메뉴얼 관련 공유', 
         path: '',
-        subItems: ["벼룩시장", "추천도서"]
+        subItems: [
+            {title: "벼룩시장", path: ''},
+            {title: "추천도서", path: ''}
+        ]
     },
     { 
         id: 7, 
         title: '법령정보', 
         description: '보건 관련 법령 정보 공유', 
         path: '',
-        subItems: ["시도교류", "보건웹툰", "승진자료실"]
+        subItems: [
+            {title: "시도교류", path: ''},
+            {title : "보건웹툰", path: ''},
+            {title: "승진자료실", path: ''}
+        ]
     },
     { 
         id: 8, 
         title: '구인구직', 
         description: '구인 및 구직', 
         path: '',
-        subItems: ["사회건강", "인체해부"]
+        subItems: [
+            {title: "사회건강", path: ''},
+            {title: "인체해부", path: ''}
+        ]
     }
 ]
