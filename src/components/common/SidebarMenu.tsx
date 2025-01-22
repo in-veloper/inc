@@ -32,6 +32,8 @@ const SidebarMenu = () => {
                             sx={{
                                 '&.Mui-selected': {
                                     backgroundColor: '#9E0011',
+                                    borderRadius: 1,
+                                    opacity: 0.8,
                                     color: '#FFF',
                                     '&:hover': {
                                         backgroundColor: '#7C0011'
