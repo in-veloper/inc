@@ -246,7 +246,7 @@ const MediInfo: React.FC = () => {
                             <Box
                                 sx={{
                                     marginTop: 5,
-                                    width: 400,
+                                    width: 350,
                                     height: '100%', 
                                     backgroundColor: '#FFF',
                                     borderRadius: 2,
