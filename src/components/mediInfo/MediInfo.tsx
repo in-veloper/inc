@@ -4,7 +4,6 @@ import { ColDef } from 'ag-grid-community'
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
 import { ClientSideRowModelModule, PaginationModule, TextFilterModule, NumberFilterModule, ValidationModule, TooltipModule } from 'ag-grid-community'
-import { Input, Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter, ListGroup, ListGroupItem, CardImg, Popover, PopoverBody, PopoverHeader } from "reactstrap";
 import Circle from "../../asset/img/medicine/circle.png";
 import Oval from "../../asset/img/medicine/oval.png";
 import SemiCircular from "../../asset/img/medicine/semicircular.png";
@@ -24,8 +23,9 @@ import Minus from "../../asset/img/medicine/minus.png";
 import Plus from "../../asset/img/medicine/plus.png";
 import Etc from "../../asset/img/medicine/etc.png";
 import SidebarMenu from '../common/SidebarMenu'
+import { Box, FormControl, InputLabel, MenuItem, Select, Table, TableBody, TableCell, TableRow, TextField, Typography, Button } from '@mui/material'
+import emedipiaLogo from '../../asset/partnerLogo/emedipia_logo.png'
 import './style/mediInfo.css'
-import { Box, Table, TableBody, TableCell, TableRow, Typography } from '@mui/material'
 
 const MediInfo: React.FC = () => {
     const rowData = [
@@ -129,8 +129,8 @@ const MediInfo: React.FC = () => {
         <div className='mediInfo'>
             <SidebarMenu />
             <div className='mediInfo-container'>
-                <div className="content" style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Box style={{ flex: '1 1 auto' }}>
+                <div className="mediInfo-content">
+                    <Box className='mediInfo-box'>
                         <Box>
                             <Table className='search-shape'>
                                 <TableBody>
@@ -183,124 +183,150 @@ const MediInfo: React.FC = () => {
                                     </TableRow>
                                 </TableBody>
                             </Table>
-                            <Row className="d-flex no-gutters">
-                                <Table className='search-formulation'>
-                                    <TableBody>
-                                        <TableRow>
+                            <Table className='search-formulation'>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell
+                                            className='formulation-title-cell'
+                                        >
+                                            제형<br/>전체
+                                        </TableCell>
+                                        {formulation.map((formula, index) => (
                                             <TableCell
-                                                className='formulation-title-cell'
+                                                className='formulation-cell'
+                                                key={index}
                                             >
-                                                제형<br/>전체
-                                            </TableCell>
-                                            {formulation.map((formula, index) => (
-                                                <TableCell
-                                                    className='formulation-cell'
-                                                    key={index}
-                                                >
-                                                    <img 
-                                                        src={formula.image}
-                                                        alt={formula.label}
-                                                    />
-                                                    <Typography variant="caption">{formula.label}</Typography>
-                                                </TableCell>
-                                            ))}
-                                            {formulation.length < colors.length && (
-                                                <TableCell
-                                                    className='formulation-empty-cell'
-                                                    colSpan={colors.length - formulation.length}
+                                                <img 
+                                                    src={formula.image}
+                                                    alt={formula.label}
                                                 />
-                                            )}
-                                        </TableRow>
-                                    </TableBody>
-                                </Table>
-                                <Table className='search-dividing'>
-                                    <TableBody>
-                                        <TableRow>
+                                                <Typography variant="caption">{formula.label}</Typography>
+                                            </TableCell>
+                                        ))}
+                                        {formulation.length < colors.length && (
                                             <TableCell
-                                                className='dividing-title-cell'
+                                                className='formulation-empty-cell'
+                                                colSpan={colors.length - formulation.length}
+                                            />
+                                        )}
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                            <Table className='search-dividing'>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell
+                                            className='dividing-title-cell'
+                                        >
+                                            분할선<br/>전체
+                                        </TableCell>
+                                        {dividing.map((divide, index) => (
+                                            <TableCell
+                                                className='dividing-cell'
+                                                key={index}
                                             >
-                                                분할선<br/>전체
-                                            </TableCell>
-                                            {dividing.map((divide, index) => (
-                                                <TableCell
-                                                    className='dividing-cell'
-                                                    key={index}
-                                                >
-                                                    <img 
-                                                        src={divide.image}
-                                                        alt={divide.label}
-                                                    />
-                                                    <Typography variant="caption">{divide.label}</Typography>
-                                                </TableCell>
-                                            ))}
-                                            {dividing.length < colors.length && (
-                                                <TableCell
-                                                    className='dividing-empty-cell'
-                                                    colSpan={colors.length - dividing.length}
+                                                <img 
+                                                    src={divide.image}
+                                                    alt={divide.label}
                                                 />
-                                            )}
-                                        </TableRow>
-                                    </TableBody>
-                                </Table>
-                            </Row>
+                                                <Typography variant="caption">{divide.label}</Typography>
+                                            </TableCell>
+                                        ))}
+                                        {dividing.length < colors.length && (
+                                            <TableCell
+                                                className='dividing-empty-cell'
+                                                colSpan={colors.length - dividing.length}
+                                            />
+                                        )}
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
                         </Box>
-                        <Box sx={{ marginTop: 5}}>
-                            <Row className="justify-content-end no-gutters mt-3">
-                                <Input
-                                    className="ml-3 mr-2"
-                                    id="searchCategory"
-                                    name="select"
-                                    type="select"
-                                    style={{ width: '120px'}}
-                                    onChange={handleSearchCategory}
-                                    // value={searchCategory}
-                                >
-                                    <option value='mName'>제품명</option>
-                                    <option value='mCompany'>업체명</option>
-                                    <option value='mEffect'>효능</option>
-                                    <option value='mCode'>품목기준코드</option>
-                                </Input>
-                                <Input
-                                    type="search"
-                                    // value={searchText}
-                                    placeholder="검색 키워드를 입력하세요"
-                                    // onKeyDown={handleKeyDown}
-                                    autoFocus={true}
-                                    style={{ width: '39.2%', height: '40px'}}
-                                    // onChange={handleSearchText}
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                            <Box
+                                sx={{
+                                    marginTop: 5,
+                                    width: 400,
+                                    height: '100%', 
+                                    backgroundColor: '#FFF',
+                                    borderRadius: 2,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: 2,
+                                    boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.2)',
+                                }}
+                            >
+                                <img 
+                                    src={emedipiaLogo}
+                                    style={{ width: 230, height: 57, marginLeft: -30, cursor: 'pointer'}}
                                 />
-                                <Button className="ml-2" style={{ height: '38px', marginTop: 1 }} onClick={handleSearch}>약 정보로 검색</Button>
-                                <Button className="ml-1" style={{ height: '38px', marginTop: 1 }} onClick={resetSearch}>초기화</Button>
-                            </Row>
-                            <Row className="d-flex align-items-center justify-content-end no-gutters" style={{ marginTop: -7}}>
-                                <Input 
-                                    type="text"
-                                    placeholder="식별문자 (약의 앞면이나 뒷면에 표기된 문자)로 검색"
-                                    style={{ width: '60.8%', height: '40px' }}
-                                    // value={discriminationText}
-                                    // onChange={handleDiscriminationText}
-                                    // onKeyDown={handleSearchShapeKeyDown}
-                                />
-                                <Button className="ml-2" onClick={searchByMedicineShape}>약 모양으로 검색</Button>
-                                <Button className="ml-1" style={{ height: '38px' }} onClick={resetSearchByMedicineShape}>초기화</Button>
-                            </Row>
+                            </Box>
+                            <Box sx={{ flex: 1 }}>
+                                <Box sx={{ marginTop: 5}}>
+                                    <Box className='searchbar-first-row'>
+                                        <FormControl sx={{ minWidth: '150px' }} size='small'>
+                                            <InputLabel id='medi-search-select-label'>분류</InputLabel>
+                                            <Select
+                                                labelId='medi-search-select-label'
+                                                id='medi-search-select'
+                                                // value={searchCategory}
+                                                label='분류'
+                                                onChange={handleSearchCategory}
+                                                MenuProps={{
+                                                    disableScrollLock: true
+                                                }}
+                                            >
+                                                <MenuItem value='mName'>제품명</MenuItem>
+                                                <MenuItem value='mCompany'>업체명</MenuItem>
+                                                <MenuItem value='mEffect'>효능</MenuItem>
+                                                <MenuItem value='mCode'>품목기준코드</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                        <Box className='searchbar-first-row-textfield'>
+                                            <TextField 
+                                                fullWidth
+                                                size='small'
+                                                placeholder='검색 키워드를 입력하세요'
+                                                autoFocus
+                                            />
+                                        </Box>
+                                        <Box className='searchbar-first-row-button-group'>
+                                            <Button variant='contained' color='primary'>약 정보로 검색</Button>
+                                            <Button variant='contained' color='inherit'>초기화</Button>
+                                        </Box>
+                                    </Box>
+                                    <Box className='searchbar-second-row'>
+                                        <Box className='searchbar-second-row-textfield'>
+                                            <TextField 
+                                                fullWidth
+                                                size='small'
+                                                placeholder='식별문자 (약의 앞면이나 뒷면에 표기된 문자)로 검색'
+                                            />
+                                        </Box>
+                                        <Box className='searchbar-second-row-button-group'>
+                                            <Button variant='contained' color='primary' onClick={searchByMedicineShape}>약 모양으로 검색</Button>
+                                            <Button variant='contained' color='inherit' onClick={resetSearchByMedicineShape}>초기화</Button>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            </Box>
                         </Box>
                     </Box>
-                    <Box style={{ flex: '1 1 auto' }}>
-                        <Col md="12">
-                            <div className='ag-theme-alpine' style={{ height: '100vh', minHeight: '60vh', maxHeight: '60vh' }}>
-                                <AgGridReact
-                                    theme="legacy"
-                                    rowData={rowData}
-                                    columnDefs={columnDefs}
-                                    defaultColDef={{ sortable: true, filter: true }} 
-                                    pagination={true} 
-                                    paginationPageSize={10}
-                                    paginationPageSizeSelector={[10, 20, 50, 100]}
-                                    modules={[ClientSideRowModelModule, PaginationModule, TextFilterModule, NumberFilterModule, ValidationModule, TooltipModule]}
-                                />
-                            </div>
-                        </Col>
+                    <Box>
+                        <div className='ag-theme-alpine' style={{ height: '100vh', minHeight: '60vh', maxHeight: '60vh' }}>
+                            <AgGridReact
+                                theme="legacy"
+                                rowData={rowData}
+                                columnDefs={columnDefs}
+                                defaultColDef={{ sortable: true, filter: true }} 
+                                pagination={true} 
+                                paginationPageSize={10}
+                                paginationPageSizeSelector={[10, 20, 50, 100]}
+                                modules={[ClientSideRowModelModule, PaginationModule, TextFilterModule, NumberFilterModule, ValidationModule, TooltipModule]}
+                            />
+                        </div>
                     </Box>
                 </div>
             </div>
