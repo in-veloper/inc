@@ -260,7 +260,7 @@ const MediInfo: React.FC = () => {
                             >
                                 <img 
                                     src={emedipiaLogo}
-                                    style={{ width: 230, height: 57, marginLeft: -30, cursor: 'pointer'}}
+                                    style={{ width: 200, height: 57, marginLeft: -30, cursor: 'pointer'}}
                                 />
                             </Box>
                             <Box sx={{ flex: 1 }}>

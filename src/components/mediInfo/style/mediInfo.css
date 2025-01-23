@@ -1,6 +1,6 @@
 .mediInfo {
     padding-left: 200px;
-    padding-right: 200px;
+    padding-right: 300px;
     padding-top: 50px;
     display: flex;
 }
@@ -91,7 +91,7 @@
 }
 
 .searchbar-second-row-textfield {
-    width: 500px;
+    width: 502px;
 }
 
 .searchbar-second-row-button-group {
