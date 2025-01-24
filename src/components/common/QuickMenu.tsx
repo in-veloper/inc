@@ -1,8 +1,7 @@
 import { Box, List, ListItem, ListItemButton, ListItemText, Paper, Typography } from "@mui/material"
-import HomeIcon from "@mui/icons-material/Home"
-import PersonIcon from "@mui/icons-material/Person"
-import GroupIcon from "@mui/icons-material/Group"
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward"
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useEffect, useState } from "react"
 
 const QuickMenu = () => {
@@ -22,13 +21,13 @@ const QuickMenu = () => {
             sx={{
                 position: 'absolute',
                 top: `${offsetTop}px`,
-                right: 180,
-                width: 120
+                right: 200,
+                width: 100
             }}
         >
             <Paper elevation={3} sx={{ borderRadius: '10px', overflow: 'hidden' }}>
-                <Box sx={{ backgroundColor: '#9EC346', padding: '10px', textAlign: 'center' }}>
-                    <Typography variant="body2" sx={{ color: '#FFF', fontWeight: 'bold' }}>
+                <Box sx={{ backgroundColor: '#9E0011', padding: '10px', textAlign: 'center' }}>
+                    <Typography sx={{ color: '#FFF', fontWeight: 'bold', fontSize: 12 }}>
                         QUICK MENU
                     </Typography>
                 </Box>
@@ -36,25 +35,25 @@ const QuickMenu = () => {
                 <List sx={{ padding: 0 }}>
                     <ListItem disablePadding>
                         <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} href="#section1">
-                            <HomeIcon sx={{ fontSize: 30, color: '9EC346' }} />
-                            <Typography sx={{ fontSize: "13px", color: "#666", textAlign: "center" }}>
-                                직업건강웹진
+                            <DashboardIcon sx={{ fontSize: 30, color: '9EC346' }} />
+                            <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
+                                홈
                             </Typography>
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
                         <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} href="#section2">
-                            <PersonIcon sx={{ fontSize: 30, color: '9EC346' }} />
-                            <Typography sx={{ fontSize: "13px", color: "#666", textAlign: "center" }}>
-                                경력관리시스템
+                            <SupportAgentIcon sx={{ fontSize: 30, color: '9EC346' }} />
+                            <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
+                                1:1 문의
                             </Typography>
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
                         <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} href="#section3">
-                            <GroupIcon sx={{ fontSize: 30, color: '9EC346' }} />
-                            <Typography sx={{ fontSize: "13px", color: "#666", textAlign: "center" }}>
-                                조직도
+                            <AccountCircleIcon sx={{ fontSize: 30, color: '9EC346' }} />
+                            <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
+                                내 정보
                             </Typography>
                         </ListItemButton>
                     </ListItem>
@@ -69,7 +68,7 @@ const QuickMenu = () => {
                     }}
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 >
-                    <Typography variant="body2" sx={{ color: '#FFF', fontWeight: 'bold' }}>
+                    <Typography sx={{ color: '#FFF', fontWeight: 'bold', fontSize: 12 }}>
                         TOP
                     </Typography>
                 </Box>

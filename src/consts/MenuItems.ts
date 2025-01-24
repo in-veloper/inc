@@ -1,13 +1,13 @@
 export const menuItems = [
     {   
         id: 1, 
-        title: '보건 이슈 공유', 
+        title: '이용 안내', 
         description: '보건 관련 이슈 공유', 
-        path: '',
+        path: 'notice',
         subItems: [
-            {title: "공지사항", path: ''}, 
-            {title: "인사말", path: ''}, 
-            {title: "참여보건", path: ''}
+            {title: "공지사항", path: '/notice'}, 
+            {title: "1:1 문의", path: '/inquiry'}, 
+            {title: "FAQ", path: '/faq'}
         ]
 
     },

@@ -26,7 +26,7 @@ type Weather = {
     icon: string
 }
 
-const Header: React.FC = () => {
+const Header = () => {
     const { location, error } = useGeoLocation(geolocationOptions)
     const [weather, setWeather] = useState<Weather | null>(null)
     const [cityName, setCityName] = useState('')
@@ -127,7 +127,7 @@ const Header: React.FC = () => {
                                             {menu.title}
                                         </Typography>
                                         {menu.subItems.map((subItem, subIndex) => (
-                                            <Link key={subIndex} to={menu.path} className="dropdown-item">
+                                            <Link key={subIndex} to={subItem.path} className="dropdown-item">
                                                 {subItem.title}
                                             </Link>
                                         ))}

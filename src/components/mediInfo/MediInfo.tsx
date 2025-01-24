@@ -23,11 +23,11 @@ import Minus from "../../asset/img/medicine/minus.png";
 import Plus from "../../asset/img/medicine/plus.png";
 import Etc from "../../asset/img/medicine/etc.png";
 import SidebarMenu from '../common/SidebarMenu'
-import { Box, FormControl, InputLabel, MenuItem, Select, Table, TableBody, TableCell, TableRow, TextField, Typography, Button } from '@mui/material'
+import { Box, FormControl, InputLabel, MenuItem, Select, Table, TableBody, TableCell, TableRow, TextField, Typography, Button, Divider } from '@mui/material'
 import emedipiaLogo from '../../asset/partnerLogo/emedipia_logo.png'
 import './style/mediInfo.css'
 
-const MediInfo: React.FC = () => {
+const MediInfo = () => {
     const rowData = [
         { id: 1, name: '이름1', age: 25, city: '서울' },
         { id: 2, name: '이름2', age: 30, city: '부산' },
@@ -80,7 +80,7 @@ const MediInfo: React.FC = () => {
         { image: Etc, label: "기타" }
     ]
     
-      // 약품 정보 Grid Column 정의
+    // 약품 정보 Grid Column 정의
     const [columnDefs] = useState<ColDef[]>([
         {field: 'itemName', headerName: '제품명', flex: 2, tooltipValueGetter: (params) => params.value},
         {field: 'entpName', headerName: '업체명', flex: 1.5, tooltipValueGetter: (params) => params.value},
@@ -130,6 +130,12 @@ const MediInfo: React.FC = () => {
             <SidebarMenu />
             <div className='mediInfo-container'>
                 <div className="mediInfo-content">
+                    <Box sx={{ width: '100%', marginBottom: '30px'}}>
+                        <Typography sx={{ fontSize: '20px', fontWeight: 'bold' }}>
+                            약품정보
+                        </Typography>
+                        <Divider sx={{ marginTop: '10px' }} />
+                    </Box>
                     <Box className='mediInfo-box'>
                         <Box>
                             <Table className='search-shape'>

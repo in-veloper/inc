@@ -134,7 +134,7 @@ const popularArticles = [
     { menuName: '보건이슈 공유', title: '학회 이슈 공유', avatar: <AccountCircleIcon className='latest-article-avatar' />, nickName: 'number1', commentCount: 1 },
 ]
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
     const { location, error } = useGeoLocation(geolocationOptions)
     const [weather, setWeather] = useState<Weather | null>(null)
     const [cityName, setCityName] = useState('')

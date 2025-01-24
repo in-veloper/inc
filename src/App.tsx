@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MediInfo from './components/mediInfo/MediInfo';
 import { createTheme, ThemeProvider } from '@mui/material';
 import QuickMenu from './components/common/QuickMenu';
+import Notice from './components/notice/Notice';
+import Inquiry from './components/inquiry/Inquiry';
 import './App.css';
 
 const theme = createTheme({
@@ -22,6 +24,8 @@ function App() {
           <QuickMenu />
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/notice" element={<Notice />} />
+            <Route path="/inquiry" element={<Inquiry />} />
             <Route path="/medi-info" element={<MediInfo />} />
           </Routes>
           <Footer />
