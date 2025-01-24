@@ -3,8 +3,10 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 const QuickMenu = () => {
+    const navigate = useNavigate()
     const [offsetTop, setOffsetTop] = useState(100) // 초기 위치
 
     useEffect(() => {
@@ -15,6 +17,14 @@ const QuickMenu = () => {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
+
+    const handleClickHome = () => {
+        navigate('/')
+    }
+
+    const handleClickInquiry = () => {
+        navigate('/inquiry')
+    }
 
     return (
         <Box
@@ -34,7 +44,7 @@ const QuickMenu = () => {
 
                 <List sx={{ padding: 0 }}>
                     <ListItem disablePadding>
-                        <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} href="#section1">
+                        <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} onClick={handleClickHome}>
                             <DashboardIcon sx={{ fontSize: 30, color: '9EC346' }} />
                             <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
                                 홈
@@ -42,7 +52,7 @@ const QuickMenu = () => {
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} href="#section2">
+                        <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} onClick={handleClickInquiry}>
                             <SupportAgentIcon sx={{ fontSize: 30, color: '9EC346' }} />
                             <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
                                 1:1 문의
