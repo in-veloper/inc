@@ -1,0 +1,12 @@
+.faq {
+    padding-left: 200px;
+    padding-right: 300px;
+    padding-top: 50px;
+    display: flex;
+}
+
+.faq-container {
+    flex: 1;
+    height: 100vh;
+    margin-bottom: 30px;
+}

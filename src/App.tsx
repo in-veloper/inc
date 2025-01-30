@@ -8,6 +8,7 @@ import QuickMenu from './components/common/QuickMenu';
 import Notice from './components/notice/Notice';
 import Inquiry from './components/inquiry/Inquiry';
 import './App.css';
+import Faq from './components/faq/Faq';
 
 const theme = createTheme({
   typography: {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/notice" element={<Notice />} />
             <Route path="/inquiry" element={<Inquiry />} />
+            <Route path="/faq" element={<Faq />} />
             <Route path="/medi-info" element={<MediInfo />} />
           </Routes>
           <Footer />

@@ -137,6 +137,7 @@
     font-weight: bold;
     padding: 17px 13px;
     white-space: nowrap;
+    font-size: 15px;
 }
 
 .menu-link:hover {

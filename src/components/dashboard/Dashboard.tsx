@@ -142,8 +142,7 @@ const Dashboard = () => {
     const getWeather = async (latitude: number, longitude: number) => {
         try {
             const weatherBlock = document.querySelector('.weather-block')
-            if (weatherBlock) weatherBlock.classList.add('blocked')
-            showBlock('.weather-block', '')
+            if (!weatherBlock) showBlock('.weather-block', '')
 
             const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric&lang=kr`);
 
@@ -166,8 +165,7 @@ const Dashboard = () => {
             console.log('Openweather 날씨 정보 조회 중 Error', error)
         } finally {
             const weatherBlock = document.querySelector('.weather-block')
-            if (weatherBlock) weatherBlock.classList.remove('blocked')
-            hideBlock('.weather-block')
+            if (weatherBlock) hideBlock('.weather-block')
         }
     }
 

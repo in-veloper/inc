@@ -31,7 +31,7 @@ const QuickMenu = () => {
             sx={{
                 position: 'absolute',
                 top: `${offsetTop}px`,
-                right: 200,
+                right: 180,
                 width: 100
             }}
         >
@@ -46,7 +46,7 @@ const QuickMenu = () => {
                     <ListItem disablePadding>
                         <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} onClick={handleClickHome}>
                             <DashboardIcon sx={{ fontSize: 30, color: '9EC346' }} />
-                            <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
+                            <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center", fontWeight: 'bold' }}>
                                 홈
                             </Typography>
                         </ListItemButton>
@@ -54,7 +54,7 @@ const QuickMenu = () => {
                     <ListItem disablePadding>
                         <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} onClick={handleClickInquiry}>
                             <SupportAgentIcon sx={{ fontSize: 30, color: '9EC346' }} />
-                            <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
+                            <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center", fontWeight: 'bold' }}>
                                 1:1 문의
                             </Typography>
                         </ListItemButton>
@@ -62,7 +62,7 @@ const QuickMenu = () => {
                     <ListItem disablePadding>
                         <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} href="#section3">
                             <AccountCircleIcon sx={{ fontSize: 30, color: '9EC346' }} />
-                            <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
+                            <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center", fontWeight: 'bold' }}>
                                 내 정보
                             </Typography>
                         </ListItemButton>

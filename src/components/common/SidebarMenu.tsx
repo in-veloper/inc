@@ -59,7 +59,11 @@ const SidebarMenu = () => {
                                 // }
                             }}
                         >
-                            <ListItemText>{subItem.title}</ListItemText>
+                            <ListItemText>
+                                <Typography>
+                                    {subItem.title}
+                                </Typography>
+                            </ListItemText>
                         </MenuItem>
                     ))}
                 </MenuList>

@@ -1,5 +1,6 @@
-import { Box, Button, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material"
+import { Box, Button, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material"
 import SidebarMenu from "../common/SidebarMenu"
+import CreateIcon from '@mui/icons-material/Create';
 import './style/inquiry.css'
 
 const Inquiry = () => {
@@ -21,81 +22,110 @@ const Inquiry = () => {
                     </Typography>
                     <Divider sx={{ marginTop: '10px' }} />
                 </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Box>
+                        <Button variant="contained" color="primary" sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                            <CreateIcon sx={{ fontSize: 17 }} />
+                            <Typography>문의 작성</Typography>
+                        </Button>
+                    </Box>
+                    <Box sx={{ display: 'flex', marginBottom: '20px' }}>
+                        <Box >
+                            <TextField
+                                fullWidth
+                                size="small"
+                                placeholder="검색어를 입력하세요"
+                                autoFocus
+                            />
+                        </Box>
+                        <Box sx={{ display: 'flex', marginLeft: '20px', gap: '5px' }}>
+                            <Button variant="contained" color="primary">검색</Button>
+                            <Button variant="contained" color="inherit">초기화</Button>
+                        </Box>
+                    </Box>
+                </Box>
                 <Box>
-                    <TableContainer component={Paper}>
+                    <TableContainer component={Paper} sx={{ border: '1px solid #E2E2E2'}}>
                         <Table>
-                            <TableHead>
+                            <TableHead sx={{ borderBottom: '2px solid #E2E2E2'}}>
                                 <TableRow>
-                                <TableCell sx={{ fontWeight: "bold", textAlign: "center", backgroundColor: "#f5f5f5" }}>
+                                <TableCell sx={{ fontWeight: "bold", textAlign: "center", backgroundColor: "#F9F9F9" }}>
                                     번호
                                 </TableCell>
-                                <TableCell sx={{ fontWeight: "bold", textAlign: "center", backgroundColor: "#f5f5f5" }}>
+                                <TableCell sx={{ fontWeight: "bold", textAlign: "center", backgroundColor: "#F9F9F9" }}>
                                     제목
                                 </TableCell>
-                                <TableCell sx={{ fontWeight: "bold", textAlign: "center", backgroundColor: "#f5f5f5" }}>
-                                    글쓴이
+                                <TableCell sx={{ fontWeight: "bold", textAlign: "center", backgroundColor: "#F9F9F9" }}>
+                                    작성자
                                 </TableCell>
-                                <TableCell sx={{ fontWeight: "bold", textAlign: "center", backgroundColor: "#f5f5f5" }}>
+                                <TableCell sx={{ fontWeight: "bold", textAlign: "center", backgroundColor: "#F9F9F9" }}>
                                     등록일
                                 </TableCell>
-                                <TableCell sx={{ fontWeight: "bold", textAlign: "center", backgroundColor: "#f5f5f5" }}>
+                                <TableCell sx={{ fontWeight: "bold", textAlign: "center", backgroundColor: "#F9F9F9" }}>
                                     상태
                                 </TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {rowData.map((row) => (
-                                <TableRow key={row.seq} sx={{ borderBottom: "1px solid #e0e0e0" }}>
-                                    <TableCell sx={{ textAlign: "center", border: 0 }}>{row.seq}</TableCell>
-                                    <TableCell sx={{ border: 0 }}>
-                                    <Typography
+                                    <TableRow 
+                                        key={row.seq} 
                                         sx={{
-                                        display: "inline-block",
-                                        backgroundColor: "#e0f7fa",
-                                        borderRadius: "4px",
-                                        padding: "2px 6px",
-                                        marginRight: "8px",
-                                        fontSize: "12px",
+                                            "&:last-child td, &:last-child th": { border: 0 },
+                                            cursor: 'pointer'
                                         }}
+                                        hover
                                     >
-                                        {row.category}
-                                    </Typography>
-                                    {row.title}
-                                    </TableCell>
-                                    <TableCell sx={{ textAlign: "center", border: 0 }}>{row.writer}</TableCell>
-                                    <TableCell sx={{ textAlign: "center", border: 0 }}>{row.date}</TableCell>
-                                    <TableCell sx={{ textAlign: "center", border: 0 }}>
-                                    {row.status === "답변완료" ? (
-                                        <Button
-                                        variant="contained"
-                                        sx={{
-                                            backgroundColor: "#ffc107",
-                                            color: "#fff",
-                                            fontSize: "12px",
-                                            padding: "4px 8px",
-                                            borderRadius: "12px",
-                                        }}
-                                        disabled
-                                        >
-                                        {row.status}
-                                        </Button>
-                                    ) : (
-                                        <Button
-                                        variant="contained"
-                                        sx={{
-                                            backgroundColor: "#1976d2",
-                                            color: "#fff",
-                                            fontSize: "12px",
-                                            padding: "4px 8px",
-                                            borderRadius: "12px",
-                                        }}
-                                        disabled
-                                        >
-                                        {row.status}
-                                        </Button>
-                                    )}
-                                    </TableCell>
-                                </TableRow>
+                                        <TableCell sx={{ textAlign: "center" }}>{row.seq}</TableCell>
+                                        <TableCell sx={{ }}>
+                                            <Typography
+                                                sx={{
+                                                display: "inline-block",
+                                                backgroundColor: "#e0f7fa",
+                                                borderRadius: "4px",
+                                                padding: "2px 6px",
+                                                marginRight: "8px",
+                                                fontSize: "12px",
+                                                }}
+                                            >
+                                                {row.category}
+                                            </Typography>
+                                            {row.title}
+                                        </TableCell>
+                                        <TableCell sx={{ textAlign: "center" }}>{row.writer}</TableCell>
+                                        <TableCell sx={{ textAlign: "center" }}>{row.date}</TableCell>
+                                        <TableCell sx={{ textAlign: "center" }}>
+                                            {row.status === "답변완료" ? (
+                                                <Button
+                                                    variant="contained"
+                                                    sx={{
+                                                        backgroundColor: "#ffc107",
+                                                        color: "#fff",
+                                                        fontSize: "12px",
+                                                        padding: "4px 8px",
+                                                        borderRadius: "12px",
+                                                    }}
+                                                    disabled
+                                                >
+                                                    {row.status}
+                                                </Button>
+                                            ) : (
+                                                <Button
+                                                    variant="contained"
+                                                    sx={{
+                                                        backgroundColor: "#1976d2",
+                                                        color: "#fff",
+                                                        fontSize: "12px",
+                                                        padding: "4px 8px",
+                                                        borderRadius: "12px",
+                                                    }}
+                                                    // disabled
+                                                >
+                                                    {row.status}
+                                                </Button>
+                                            )}
+                                        </TableCell>
+                                    </TableRow>
                                 ))}
                             </TableBody>
                         </Table>

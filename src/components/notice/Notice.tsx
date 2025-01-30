@@ -45,15 +45,15 @@ const Notice = () => {
                     </Box>
                 </Box>
                 <Box>
-                    <TableContainer component={Paper} sx={{ boxShadow: "none", borderTop: "2px solid #e0e0e0", borderBottom: "2px solid #e0e0e0" }}>
+                    <TableContainer component={Paper} sx={{ border: '1px solid #E2E2E2' }}>
                         <Table>
-                            <TableHead>
+                            <TableHead sx={{ borderBottom: '2px solid #E2E2E2'}}>
                                 <TableRow>
-                                    <TableCell align="center" sx={{ fontWeight: "bold", backgroundColor: "#f9f9f9", borderBottom: "2px solid #ddd", width: '10%' }}>번호</TableCell>
-                                    <TableCell align="center" sx={{ fontWeight: "bold", backgroundColor: "#f9f9f9", borderBottom: "2px solid #ddd", width: '45%' }}>제목</TableCell>
-                                    <TableCell align="center" sx={{ fontWeight: "bold", backgroundColor: "#f9f9f9", borderBottom: "2px solid #ddd", width: '15%' }}>작성자</TableCell>
-                                    <TableCell align="center" sx={{ fontWeight: "bold", backgroundColor: "#f9f9f9", borderBottom: "2px solid #ddd", width: '20%' }}>작성일</TableCell>
-                                    <TableCell align="center" sx={{ fontWeight: "bold", backgroundColor: "#f9f9f9", borderBottom: "2px solid #ddd", width: '10%' }}>조회</TableCell>
+                                    <TableCell align="center" sx={{ fontWeight: "bold", backgroundColor: "#F9F9F9", width: '10%' }}>번호</TableCell>
+                                    <TableCell align="center" sx={{ fontWeight: "bold", backgroundColor: "#F9F9F9", width: '45%' }}>제목</TableCell>
+                                    <TableCell align="center" sx={{ fontWeight: "bold", backgroundColor: "#F9F9F9", width: '15%' }}>작성자</TableCell>
+                                    <TableCell align="center" sx={{ fontWeight: "bold", backgroundColor: "#F9F9F9", width: '20%' }}>작성일</TableCell>
+                                    <TableCell align="center" sx={{ fontWeight: "bold", backgroundColor: "#F9F9F9", width: '10%' }}>조회</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -62,13 +62,12 @@ const Notice = () => {
                                         key={row.id}
                                         sx={{
                                             "&:last-child td, &:last-child th": { border: 0 },
-                                            borderBottom: "1px solid #e0e0e0", // 행 구분 보더
                                             cursor: 'pointer'
                                         }}
                                         hover
                                     >
                                         <TableCell align="center">{row.seq}</TableCell>
-                                        <TableCell align="center">{row.title}</TableCell>
+                                        <TableCell align="left">{row.title}</TableCell>
                                         <TableCell align="center">{row.writer}</TableCell>
                                         <TableCell align="center">{row.registDate}</TableCell>
                                         <TableCell align="center">{row.views}</TableCell>
