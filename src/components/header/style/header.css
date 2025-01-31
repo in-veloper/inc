@@ -6,10 +6,10 @@
     color: #333;
     text-align: start;
     padding-left: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* 하단 박스 쉐도우 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 하단 박스 쉐도우 */
     min-height: 50px;
     padding-left: 200px;
-    padding-right: 200px;
+    padding-right: 300px;
 }
 
 .logo-div {
@@ -31,7 +31,7 @@
     color: #333;
     white-space: nowrap;
     padding-right: 20px;
-    min-width: 240px;
+    min-width: 230px;
 }
 
 .location-icon {
@@ -121,7 +121,7 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .dropdown-menu {

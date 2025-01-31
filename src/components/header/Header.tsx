@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useGeoLocation } from '../../util/useGeoLocation'
-import { InputAdornment, TextField, Typography } from "@mui/material";
+import { Button, Divider, InputAdornment, TextField, Typography } from "@mui/material";
+import HomeIcon from '@mui/icons-material/Home';
 import weatherDescKo from '../../util/weatherDescKo'
 import axios from 'axios'
 import { FaLocationArrow } from 'react-icons/fa6'
@@ -92,124 +93,140 @@ const Header = () => {
     }
 
     return (
-        <div className="app-header">
-            <div className='logo-div' onClick={handleLogoClick}>
-                <img 
-                    className='logo-icon'
-                    src='/logo_icon.png'
-                    alt='logo'
-                />
-            </div>
-            <div className="dropdown-menu">
-                <div 
-                    className='menu-container'
-                    onMouseEnter={() => setActiveMenu('menu')}
-                    onMouseLeave={() => setActiveMenu(null)}
-                >
-                    <div className='menu-bar'>
-                        {menuItems.map((menu, index) => (
-                            <div
-                                key={index}
-                                className='menu-item'
-                            >
-                                <Link to={menu.path} className='menu-link'>
-                                    {menu.title}
-                                </Link>
-                            </div>
-                        ))}
+        <div>
+            <div style={{ paddingLeft: '200px', paddingRight: '300px', display: 'flex', justifyContent: 'space-between', height: 30 }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Divider orientation='vertical' flexItem />
+                    <HomeIcon style={{ color: '#707070', paddingLeft: 10, paddingRight: 10 }}/>
+                    <Divider orientation='vertical' flexItem />
+                </div>
+                <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', color: '#707070', alignItems: 'center' }}>
+                        <Typography sx={{ fontSize: '14px', paddingRight: '10px' }}>로그인</Typography>
+                        <Divider orientation='vertical' variant='middle' flexItem />
+                        <Typography sx={{ fontSize: '14px', paddingLeft: '10px' }}>회원가입</Typography>
                     </div>
-                    {activeMenu && (
-                        <div className="dropdown-box">
-                            <div className="dropdown-content">
-                                {menuItems.map((menu) => (
-                                    <div key={menu.title} className="dropdown-column">
-                                        <Typography className="column-title" sx={{ fontSize: 16, fontWeight: "bold", marginBottom: '10px' }}>
-                                            {menu.title}
-                                        </Typography>
-                                        {menu.subItems.map((subItem, subIndex) => (
-                                            <Link key={subIndex} to={subItem.path} className="dropdown-item">
-                                                {subItem.title}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
                 </div>
             </div>
+            <div className="app-header">
+                <div className='logo-div' onClick={handleLogoClick}>
+                    <img 
+                        className='logo-icon'
+                        src='/logo_icon.png'
+                        alt='logo'
+                    />
+                </div>
+                <div className="dropdown-menu">
+                    <div 
+                        className='menu-container'
+                        onMouseEnter={() => setActiveMenu('menu')}
+                        onMouseLeave={() => setActiveMenu(null)}
+                    >
+                        <div className='menu-bar'>
+                            {menuItems.map((menu, index) => (
+                                <div
+                                    key={index}
+                                    className='menu-item'
+                                >
+                                    <Link to={menu.path} className='menu-link'>
+                                        {menu.title}
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+                        {activeMenu && (
+                            <div className="dropdown-box">
+                                <div className="dropdown-content">
+                                    {menuItems.map((menu) => (
+                                        <div key={menu.title} className="dropdown-column">
+                                            <Typography className="column-title" sx={{ fontSize: 16, fontWeight: "bold", marginBottom: '10px' }}>
+                                                {menu.title}
+                                            </Typography>
+                                            {menu.subItems.map((subItem, subIndex) => (
+                                                <Link key={subIndex} to={subItem.path} className="dropdown-item">
+                                                    {subItem.title}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
 
-            <div className='search-bar'>
-                <TextField 
-                    variant='outlined'
-                    placeholder='전체 검색'
-                    size='small'
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyDown={(e) => {
-                        if(e.key === 'Enter') handleSearch()
-                    }}
-                    slotProps={{
-                        input: {
-                            endAdornment: (
-                                <InputAdornment position='end'>
-                                    <FaSearch className='header-search-all' />
-                                </InputAdornment>
-                            )
-                        }
-                    }}
-                    sx={{
-                        width: '250px',
-                        borderRadius: '5px',
-                        '& .MuiOutlinedInput-root': {
+                <div className='search-bar'>
+                    <TextField 
+                        variant='outlined'
+                        placeholder='전체 검색'
+                        size='small'
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onKeyDown={(e) => {
+                            if(e.key === 'Enter') handleSearch()
+                        }}
+                        slotProps={{
+                            input: {
+                                endAdornment: (
+                                    <InputAdornment position='end'>
+                                        <FaSearch className='header-search-all' />
+                                    </InputAdornment>
+                                )
+                            }
+                        }}
+                        sx={{
+                            width: '250px',
                             borderRadius: '5px',
-                            "&:hover .MuiOutlinedInput-notchedOutline": {
-                                borderColor: "#9E0011",
+                            '& .MuiOutlinedInput-root': {
+                                borderRadius: '5px',
+                                "&:hover .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "#9E0011",
+                                },
+                                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "#9E0011",
+                                    borderWidth: "1px"
+                                },
                             },
-                            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                                borderColor: "#9E0011",
-                                borderWidth: "1px"
+                            '& .MuiOutlinedInput-notchedOutline': {
+                                borderColor: '#9E0011',
                             },
-                        },
-                        '& .MuiOutlinedInput-notchedOutline': {
-                            borderColor: '#9E0011',
-                        },
-                        '& .MuiInputBase-input': { // 입력 텍스트 스타일
-                            fontSize: '13px', // 입력 텍스트 크기
-                            fontWeight: '400', // 텍스트 굵기
-                            color: '#333', // 텍스트 색상
-                        },
-                        '& .MuiInputBase-input::placeholder': { // 플레이스홀더 스타일 적용
-                            fontSize: '13px', // 글자 크기 조정
-                        },
-                    }}
-                >
-                </TextField>
-            </div>
-            
-            <div className="weather-info">
-                {weather && cityName ? (
-                    <>
-                        <img src={weather?.icon} alt={weather?.description}/>
-                        <div className='weather-cityName'>
-                            {cityName}
-                            <FaLocationArrow className='location-icon' />
-                        </div> 
-                        <div className='weather-temp'>
-                            <span><b className='temp-text'>온도</b> {weather?.temp}°</span>
-                        </div>
-                        <div className='weather-humidity'>
-                            <span><b className='humidity-text'>습도</b> {weather?.humidity}%</span>
-                        </div>
-                        {/* <div className='weather-description'>
-                            {weather?.description}
-                        </div> */}
-                    </>
-                ):(
-                    <>
-                        <div className='info-message'>날씨 정보 받아오는 중</div>
-                    </>
-                )}
+                            '& .MuiInputBase-input': { // 입력 텍스트 스타일
+                                fontSize: '13px', // 입력 텍스트 크기
+                                fontWeight: '400', // 텍스트 굵기
+                                color: '#333', // 텍스트 색상
+                            },
+                            '& .MuiInputBase-input::placeholder': { // 플레이스홀더 스타일 적용
+                                fontSize: '13px', // 글자 크기 조정
+                            },
+                        }}
+                    >
+                    </TextField>
+                </div>
+                
+                <div className="weather-info">
+                    {weather && cityName ? (
+                        <>
+                            <img src={weather?.icon} alt={weather?.description}/>
+                            <div className='weather-cityName'>
+                                {cityName}
+                                <FaLocationArrow className='location-icon' />
+                            </div> 
+                            <div className='weather-temp'>
+                                <span><b className='temp-text'>온도</b> {weather?.temp}°</span>
+                            </div>
+                            <div className='weather-humidity'>
+                                <span><b className='humidity-text'>습도</b> {weather?.humidity}%</span>
+                            </div>
+                            {/* <div className='weather-description'>
+                                {weather?.description}
+                            </div> */}
+                        </>
+                    ):(
+                        <>
+                            <div className='info-message'>날씨 정보 받아오는 중</div>
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     )

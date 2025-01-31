@@ -41,6 +41,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import './style/dashboard.css'
 import { hideBlock, showBlock } from '../../util/blockLoader'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const API_KEY = process.env.REACT_APP_WEATHER_KEY
 const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_MAP_API_KEY
@@ -58,6 +59,14 @@ type Weather = {
     humidity: number
     icon: string
 }
+
+type AirQuality = {
+    pm10: number
+    pm10Grade: string
+    pm25: number
+    pm25Grade: string
+}
+
 
 const carouselItems = [
     { id: 1, image: carouselTest1, title: "Item 1", description: "This is carousel item 1"},
@@ -137,7 +146,13 @@ const popularArticles = [
 const Dashboard = () => {
     const { location, error } = useGeoLocation(geolocationOptions)
     const [weather, setWeather] = useState<Weather | null>(null)
+    const [stateCityName, setStateCityName] = useState('')
     const [cityName, setCityName] = useState('')
+    const [airQuality, setAirQuality] = useState<AirQuality | null>(null)
+
+    const convertStateCityName = (stateCityName: string) => {
+        return stateCityName.replace(/특별시|광역시|자치시|도/g, '').trim()
+    }
 
     const getWeather = async (latitude: number, longitude: number) => {
         try {
@@ -181,7 +196,10 @@ const Dashboard = () => {
                 }
             )
 
+            const stateCityName = response.data.documents[0].region_1depth_name
             const cityName = response.data.documents[0].region_2depth_name
+
+            setStateCityName(stateCityName)
             setCityName(cityName)
         } catch(error) {
             console.log('Kakao Map API 호출 중 Error', error)
@@ -196,6 +214,62 @@ const Dashboard = () => {
             getCityNameFromKakao(location.latitude, location.longitude)
         }
     }, [location])
+
+    const getAirQualityText = (grade: string) => {
+        switch (grade) {
+            case "1" : return "좋음"
+            case "2" : return "보통"
+            case "3" : return "나쁨"
+            case "4" : return "매우 나쁨"
+            default : return "정보 없음"
+        }
+    }
+
+    const getAirQualityChipColor = (grade: string) => {
+        switch (grade) {
+            case "좋음" : return "primary"
+            case "보통" : return "default"
+            case "나쁨" : return "error"
+            case "매우 나쁨" : return "error"
+            default : return "default"
+        }
+    }
+
+    const getAirQuality = async (stateCityName: string) => {
+        try {
+            const response = await axios.get(
+                `http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty`,
+                {
+                    params: {
+                        serviceKey: "fSE2RXzuDLK99AFJ/DAlvG8jmzOgyDENumYIRPPyjTy4udjq+aLEzUfa0dNwNthYahhiKqzfqs+XXjWZzZPsfA==",
+                        returnType: "json",
+                        numOfRows: "1",
+                        pageNo: "1",
+                        sidoName: convertStateCityName(stateCityName),
+                        ver: "1.0"
+                    }
+                }
+            )
+
+            const airData = response.data.response.body.items[0]
+            
+            setAirQuality({
+                pm10: parseInt(airData.pm10Value, 10),
+                pm10Grade: getAirQualityText(airData.pm10Grade),
+                pm25: parseInt(airData.pm25Value, 10),
+                pm25Grade: getAirQualityText(airData.pm25Grade)
+            })
+        } catch (error) {
+            console.log("미세먼지 API 호출 중 Error")
+        }
+    }
+
+    useEffect(() => {
+        if(stateCityName) {
+            const stateCityNameForApi = convertStateCityName(stateCityName)
+            getAirQuality(stateCityNameForApi)
+        }
+    }, [stateCityName])
 
     const handleClickMediaChip = () => {
 
@@ -289,16 +363,45 @@ const Dashboard = () => {
                                 <div className='weather-text'>
                                     <div className='weather-main'>
                                         <div>
-                                            <span><b className='dashboard-temp-text'>온도</b> <span className='temp-feature'>{weather?.temp}°</span></span>
+                                            <span><b className='dashboard-temp-text'>온도</b> <span className='temp-feature'><b>{weather?.temp}</b>°</span></span>
                                         </div>
                                         <div>
-                                            <span><b className='dashboard-humidity-text'>습도</b> <span className='humidity-feature'>{weather?.humidity}<span className='humidity-percent'>%</span></span></span>
+                                            <span><b className='dashboard-humidity-text'>습도</b> <span className='humidity-feature'><b>{weather?.humidity}</b><span className='humidity-percent'>%</span></span></span>
                                         </div>
                                     </div>
                                     <div className='dashboard-weather-description'>
                                         {weather?.description}
                                     </div>
                                 </div>
+                            </div>
+                            <div className='air-info'>
+                                <div className='pm10'>
+                                    <div>
+                                        <b>미세먼지</b>
+                                    </div>
+                                    <div>
+                                        <span className='pm10-value'>{airQuality?.pm10}</span>
+                                        <span className='pm10-feature'>㎍/m³</span>
+                                    </div>
+                                    <div className='pm10-grade'>
+                                        <Chip label={airQuality?.pm10Grade} color={getAirQualityChipColor(airQuality?.pm10Grade || '')} />
+                                    </div>
+                                </div>
+                                <div className='pm25'>
+                                    <div>
+                                        <b>초미세먼지</b>
+                                    </div>
+                                    <div>
+                                        <span className='pm25-value'>{airQuality?.pm25}</span>
+                                        <span className='pm25-feature'>㎍/m³</span>
+                                    </div>
+                                    <div className='pm25-grade'>
+                                        <Chip label={airQuality?.pm25Grade} color={getAirQualityChipColor(airQuality?.pm25Grade || '')} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='air-notice'>
+                                <Chip className='air-notice-chip' label="미세먼지 정보는 접속하신 시·도 기준으로 표시됩니다" />
                             </div>
                         </CardContent>
                     </Card>
@@ -318,7 +421,7 @@ const Dashboard = () => {
                                     </div>
                                 </Stack>
                                 <span className='stack-link'>
-                                    <img src={ShortcutIcon} alt='shortcut' />
+                                    <OpenInNewIcon />
                                 </span>
                           </Paper>
                         ))}

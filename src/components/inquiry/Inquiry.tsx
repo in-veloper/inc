@@ -1,15 +1,15 @@
-import { Box, Button, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material"
+import { Box, Button, Chip, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material"
 import SidebarMenu from "../common/SidebarMenu"
 import CreateIcon from '@mui/icons-material/Create';
 import './style/inquiry.css'
 
 const Inquiry = () => {
     const rowData = [
-        { seq: 5, category: "제품관련문의", title: "전달이 안된거 같습니다", writer: "김은지", date: "20-05-04", status: "답변완료" },
-        { seq: 4, category: "배송문의", title: "물이 덜왔어요~", writer: "김은지", date: "20-05-04", status: "답변완료" },
-        { seq: 3, category: "제품관련문의", title: "배너 시안 메일로 받을 수 있을까요?", writer: "김은지", date: "20-04-23", status: "답변완료" },
-        { seq: 2, category: "서류관련문의", title: "학교 제출서류", writer: "김은지", date: "20-04-23", status: "답변완료" },
-        { seq: 1, category: "제품관련문의", title: "배너 제작 🖼️", writer: "김은지", date: "20-04-20", status: "답변대기" },
+        { seq: 5, category: "제품관련문의", title: "전달이 안된거 같습니다", writer: "김은지", date: "20-05-04", status: "complete" },
+        { seq: 4, category: "배송문의", title: "물이 덜왔어요~", writer: "김은지", date: "20-05-04", status: "complete" },
+        { seq: 3, category: "제품관련문의", title: "배너 시안 메일로 받을 수 있을까요?", writer: "김은지", date: "20-04-23", status: "waiting" },
+        { seq: 2, category: "서류관련문의", title: "학교 제출서류", writer: "김은지", date: "20-04-23", status: "complete" },
+        { seq: 1, category: "제품관련문의", title: "배너 제작 🖼️", writer: "김은지", date: "20-04-20", status: "waiting" },
     ];
 
     return (
@@ -95,34 +95,15 @@ const Inquiry = () => {
                                         <TableCell sx={{ textAlign: "center" }}>{row.writer}</TableCell>
                                         <TableCell sx={{ textAlign: "center" }}>{row.date}</TableCell>
                                         <TableCell sx={{ textAlign: "center" }}>
-                                            {row.status === "답변완료" ? (
-                                                <Button
-                                                    variant="contained"
-                                                    sx={{
-                                                        backgroundColor: "#ffc107",
-                                                        color: "#fff",
-                                                        fontSize: "12px",
-                                                        padding: "4px 8px",
-                                                        borderRadius: "12px",
-                                                    }}
-                                                    disabled
-                                                >
-                                                    {row.status}
-                                                </Button>
+                                            {row.status === "complete" ? (
+                                                <Chip 
+                                                    label="답변완료"
+                                                />
                                             ) : (
-                                                <Button
-                                                    variant="contained"
-                                                    sx={{
-                                                        backgroundColor: "#1976d2",
-                                                        color: "#fff",
-                                                        fontSize: "12px",
-                                                        padding: "4px 8px",
-                                                        borderRadius: "12px",
-                                                    }}
-                                                    // disabled
-                                                >
-                                                    {row.status}
-                                                </Button>
+                                                <Chip 
+                                                    label="답변대기"
+                                                    color="primary"
+                                                />
                                             )}
                                         </TableCell>
                                     </TableRow>
