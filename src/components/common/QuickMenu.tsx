@@ -2,6 +2,8 @@ import { Box, List, ListItem, ListItemButton, ListItemText, Paper, Typography } 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 
@@ -43,6 +45,22 @@ const QuickMenu = () => {
                 </Box>
 
                 <List sx={{ padding: 0 }}>
+                    <ListItem disablePadding>
+                        <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} onClick={handleClickHome}>
+                            <AppRegistrationIcon sx={{ fontSize: 30, color: '9EC346' }} />
+                            <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center", fontWeight: 'bold' }}>
+                                회원가입
+                            </Typography>
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} onClick={handleClickHome}>
+                            <LockOpenIcon sx={{ fontSize: 30, color: '9EC346' }} />
+                            <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center", fontWeight: 'bold' }}>
+                                로그인
+                            </Typography>
+                        </ListItemButton>
+                    </ListItem>
                     <ListItem disablePadding>
                         <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} onClick={handleClickHome}>
                             <DashboardIcon sx={{ fontSize: 30, color: '9EC346' }} />

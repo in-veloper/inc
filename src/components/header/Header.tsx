@@ -94,7 +94,7 @@ const Header = () => {
 
     return (
         <div>
-            <div style={{ paddingLeft: '200px', paddingRight: '300px', display: 'flex', justifyContent: 'space-between', height: 30 }}>
+            {/* <div style={{ paddingLeft: '200px', paddingRight: '300px', display: 'flex', justifyContent: 'space-between', height: 30 }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <Divider orientation='vertical' flexItem />
                     <HomeIcon style={{ color: '#707070', paddingLeft: 10, paddingRight: 10 }}/>
@@ -107,7 +107,7 @@ const Header = () => {
                         <Typography sx={{ fontSize: '14px', paddingLeft: '10px' }}>회원가입</Typography>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="app-header">
                 <div className='logo-div' onClick={handleLogoClick}>
                     <img 

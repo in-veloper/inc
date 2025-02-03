@@ -57,22 +57,30 @@ const Notice = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rowData.slice((page - 1) * rowsPerPage, page * rowsPerPage).map((row) => (
-                                    <TableRow 
-                                        key={row.id}
-                                        sx={{
-                                            "&:last-child td, &:last-child th": { border: 0 },
-                                            cursor: 'pointer'
-                                        }}
-                                        hover
-                                    >
-                                        <TableCell align="center">{row.seq}</TableCell>
-                                        <TableCell align="left">{row.title}</TableCell>
-                                        <TableCell align="center">{row.writer}</TableCell>
-                                        <TableCell align="center">{row.registDate}</TableCell>
-                                        <TableCell align="center">{row.views}</TableCell>
+                                {rowData.length > 0 ? (
+                                    rowData.slice((page - 1) * rowsPerPage, page * rowsPerPage).map((row) => (
+                                        <TableRow 
+                                            key={row.id}
+                                            sx={{
+                                                "&:last-child td, &:last-child th": { border: 0 },
+                                                cursor: 'pointer'
+                                            }}
+                                            hover
+                                        >
+                                            <TableCell align="center">{row.seq}</TableCell>
+                                            <TableCell align="left">{row.title}</TableCell>
+                                            <TableCell align="center">{row.writer}</TableCell>
+                                            <TableCell align="center">{row.registDate}</TableCell>
+                                            <TableCell align="center">{row.views}</TableCell>
+                                        </TableRow>
+                                    ))
+                                ) : (
+                                    <TableRow>
+                                        <TableCell colSpan={5} align="center" sx={{ padding: '20px', fontSize: '16px', color: '#888' }}>
+                                            작성된 공지사항이 없습니다
+                                        </TableCell>
                                     </TableRow>
-                                ))}
+                                )}
                             </TableBody>
                         </Table>
                     </TableContainer>

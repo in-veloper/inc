@@ -67,47 +67,55 @@ const Inquiry = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rowData.map((row) => (
-                                    <TableRow 
-                                        key={row.seq} 
-                                        sx={{
-                                            "&:last-child td, &:last-child th": { border: 0 },
-                                            cursor: 'pointer'
-                                        }}
-                                        hover
-                                    >
-                                        <TableCell sx={{ textAlign: "center" }}>{row.seq}</TableCell>
-                                        <TableCell sx={{ }}>
-                                            <Typography
-                                                sx={{
-                                                display: "inline-block",
-                                                backgroundColor: "#e0f7fa",
-                                                borderRadius: "4px",
-                                                padding: "2px 6px",
-                                                marginRight: "8px",
-                                                fontSize: "12px",
-                                                }}
-                                            >
-                                                {row.category}
-                                            </Typography>
-                                            {row.title}
-                                        </TableCell>
-                                        <TableCell sx={{ textAlign: "center" }}>{row.writer}</TableCell>
-                                        <TableCell sx={{ textAlign: "center" }}>{row.date}</TableCell>
-                                        <TableCell sx={{ textAlign: "center" }}>
-                                            {row.status === "complete" ? (
-                                                <Chip 
-                                                    label="답변완료"
-                                                />
-                                            ) : (
-                                                <Chip 
-                                                    label="답변대기"
-                                                    color="primary"
-                                                />
-                                            )}
+                                {rowData.length > 0 ? (
+                                    rowData.map((row) => (
+                                        <TableRow 
+                                            key={row.seq} 
+                                            sx={{
+                                                "&:last-child td, &:last-child th": { border: 0 },
+                                                cursor: 'pointer'
+                                            }}
+                                            hover
+                                        >
+                                            <TableCell sx={{ textAlign: "center" }}>{row.seq}</TableCell>
+                                            <TableCell sx={{ }}>
+                                                <Typography
+                                                    sx={{
+                                                    display: "inline-block",
+                                                    backgroundColor: "#e0f7fa",
+                                                    borderRadius: "4px",
+                                                    padding: "2px 6px",
+                                                    marginRight: "8px",
+                                                    fontSize: "12px",
+                                                    }}
+                                                >
+                                                    {row.category}
+                                                </Typography>
+                                                {row.title}
+                                            </TableCell>
+                                            <TableCell sx={{ textAlign: "center" }}>{row.writer}</TableCell>
+                                            <TableCell sx={{ textAlign: "center" }}>{row.date}</TableCell>
+                                            <TableCell sx={{ textAlign: "center" }}>
+                                                {row.status === "complete" ? (
+                                                    <Chip 
+                                                        label="답변완료"
+                                                        color="primary"
+                                                    />
+                                                ) : (
+                                                    <Chip 
+                                                        label="답변대기"
+                                                    />
+                                                )}
+                                            </TableCell>
+                                        </TableRow>
+                                    ))
+                                ) : (
+                                    <TableRow>
+                                        <TableCell colSpan={5} align="center" sx={{ padding: '20px', fontSize: '16px', color: '#888' }}>
+                                            작성된 문의사항이 없습니다
                                         </TableCell>
                                     </TableRow>
-                                ))}
+                                )}
                             </TableBody>
                         </Table>
                     </TableContainer>
