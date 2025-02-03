@@ -86,12 +86,12 @@ const Inquiry = () => {
                                             <TableCell sx={{ }}>
                                                 <Typography
                                                     sx={{
-                                                    display: "inline-block",
-                                                    backgroundColor: "#e0f7fa",
-                                                    borderRadius: "4px",
-                                                    padding: "2px 6px",
-                                                    marginRight: "8px",
-                                                    fontSize: "12px",
+                                                        display: "inline-block",
+                                                        backgroundColor: "#e0f7fa",
+                                                        borderRadius: "4px",
+                                                        padding: "2px 6px",
+                                                        marginRight: "8px",
+                                                        fontSize: "12px",
                                                     }}
                                                 >
                                                     {row.category}
