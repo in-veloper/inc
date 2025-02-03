@@ -20,6 +20,10 @@ const Notice = () => {
         { id: 5, seq: "5", title: "공지사항 제목5", writer: "작성자5", registDate: "2023-01-05", views: 500 },
     ];
 
+    const handleRowClick = (row: any) => {
+        
+    }
+
     return (
         <div className="notice">
             <SidebarMenu />
@@ -66,6 +70,7 @@ const Notice = () => {
                                                 cursor: 'pointer'
                                             }}
                                             hover
+                                            onClick={() => handleRowClick(row)}
                                         >
                                             <TableCell align="center">{row.seq}</TableCell>
                                             <TableCell align="left">{row.title}</TableCell>

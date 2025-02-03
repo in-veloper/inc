@@ -12,6 +12,10 @@ const Inquiry = () => {
         { seq: 1, category: "제품관련문의", title: "배너 제작 🖼️", writer: "김은지", date: "20-04-20", status: "waiting" },
     ];
 
+    const handleRowClick = (row: any) => {
+
+    }
+
     return (
         <div className="inquiry">
             <SidebarMenu />
@@ -76,6 +80,7 @@ const Inquiry = () => {
                                                 cursor: 'pointer'
                                             }}
                                             hover
+                                            onClick={() => handleRowClick(row)}
                                         >
                                             <TableCell sx={{ textAlign: "center" }}>{row.seq}</TableCell>
                                             <TableCell sx={{ }}>
