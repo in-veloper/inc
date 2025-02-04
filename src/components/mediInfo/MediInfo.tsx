@@ -125,6 +125,10 @@ const MediInfo = () => {
 
     }
 
+    const handleClickEmedipiaLogo = () => {
+        window.open('https://emedipia.co.kr/')
+    }
+
     return (
         <div className='mediInfo'>
             <SidebarMenu />
@@ -261,8 +265,9 @@ const MediInfo = () => {
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     padding: 2,
-                                    boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.2)',
+                                    boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.2)'
                                 }}
+                                onClick={handleClickEmedipiaLogo}
                             >
                                 <img 
                                     src={emedipiaLogo}
