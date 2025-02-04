@@ -17,10 +17,10 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if(err) {
-        console.log('mysql DB 연결 실패 : ', err)
+        console.log('DB Connection Failed : ', err)
         return
     }
-    console.log('mysql DB 연결 성공')
+    console.log('DB Connection Success')
 })
 
 app.use(cors())

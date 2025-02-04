@@ -28,6 +28,14 @@ const QuickMenu = () => {
         navigate('/inquiry')
     }
 
+    const handleClickLogin = () => {
+        navigate('/login')
+    }
+
+    const handleClickSignup = () => {
+        navigate('/signup')
+    }
+
     return (
         <Box
             sx={{
@@ -46,7 +54,7 @@ const QuickMenu = () => {
 
                 <List sx={{ padding: 0 }}>
                     <ListItem disablePadding>
-                        <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} onClick={handleClickHome}>
+                        <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} onClick={handleClickSignup}>
                             <AppRegistrationIcon sx={{ fontSize: 30, color: '9EC346' }} />
                             <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center", fontWeight: 'bold' }}>
                                 회원가입
@@ -54,7 +62,7 @@ const QuickMenu = () => {
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} onClick={handleClickHome}>
+                        <ListItemButton sx={{ flexDirection: 'column', textAlign: 'center' }} onClick={handleClickLogin}>
                             <LockOpenIcon sx={{ fontSize: 30, color: '9EC346' }} />
                             <Typography sx={{ fontSize: "12px", color: "#666", textAlign: "center", fontWeight: 'bold' }}>
                                 로그인

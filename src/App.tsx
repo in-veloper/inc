@@ -7,8 +7,10 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import QuickMenu from './components/common/QuickMenu';
 import Notice from './components/notice/Notice';
 import Inquiry from './components/inquiry/Inquiry';
-import './App.css';
+import Login from './components/login/Login';
 import Faq from './components/faq/Faq';
+import Signup from './components/signup/Signup';
+import './App.css';
 
 const theme = createTheme({
   typography: {
@@ -25,6 +27,8 @@ function App() {
           <QuickMenu />
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/notice" element={<Notice />} />
             <Route path="/inquiry" element={<Inquiry />} />
             <Route path="/faq" element={<Faq />} />
