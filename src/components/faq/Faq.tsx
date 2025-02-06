@@ -41,7 +41,7 @@ const Faq = () => {
                 </Box>
                 <Box>
                     {faqData.map((item, index) => (
-                        <Accordion key={index} sx={{ border: '1px solid #E2E2E2'}}>
+                        <Accordion key={index} sx={{ border: '1px solid #E2E2E2' }}>
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls={`panel${index + 1}-content`}

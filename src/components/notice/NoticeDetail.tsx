@@ -80,7 +80,7 @@ const NoticeDetail = () => {
                         </Typography>
                     </Box>
                 </Box>
-                <Accordion>
+                <Accordion defaultExpanded sx={{ border: '1px solid #DDD', borderRadius: '5px', boxShadow: 0 }}>
                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography>
                             댓글
