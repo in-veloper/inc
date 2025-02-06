@@ -30,7 +30,6 @@ import LoyaltyIcon from '@mui/icons-material/Loyalty'
 import VaccinesIcon from '@mui/icons-material/Vaccines'
 import GavelIcon from '@mui/icons-material/Gavel'
 import TextsmsIcon from '@mui/icons-material/Textsms';
-import ShortcutIcon from '../../asset/icon/shortcut.png'
 import IssueIcon from '../../asset/icon/issue.png'
 import QuestionAndAnswer from '../../asset/icon/questionandanswer.png'
 import GeneralHealthCheck from '../../asset/icon/generalHealthCheck.png'
@@ -39,9 +38,9 @@ import Job from '../../asset/icon/job.png'
 import SafetyData from '../../asset/icon/safetyData.png'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import './style/dashboard.css'
 import { hideBlock, showBlock } from '../../util/blockLoader'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import './style/dashboard.css'
 
 const API_KEY = process.env.REACT_APP_WEATHER_KEY
 const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_MAP_API_KEY

@@ -6,8 +6,10 @@ import './style/sidebarMenu.css'
 const SidebarMenu = () => {
     const location = useLocation()
 
+    const basePath = `/${location.pathname.split('/')[1]}`
+
     // 현재 활성화된 대메뉴 탐색
-    const activeMainMenu = menuItems.find((menu) => menu.subItems.some((subItem) => location.pathname === subItem.path))
+    const activeMainMenu = menuItems.find((menu) => menu.subItems.some((subItem) => basePath === subItem.path))
 
     // 활성화된 대메뉴 없는 경우 Sidebar 비움
     if(!activeMainMenu) return null
@@ -43,7 +45,7 @@ const SidebarMenu = () => {
                             key={index}
                             component={Link}
                             to={subItem.path}
-                            selected={location.pathname === subItem.path}
+                            selected={basePath === subItem.path}
                             sx={{
                                 '&.Mui-selected': {
                                     backgroundColor: '#9E0011',

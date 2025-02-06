@@ -1,11 +1,14 @@
 import { Box, Button, Divider, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, TextField, Typography } from "@mui/material"
 import SidebarMenu from "../common/SidebarMenu"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import './style/notice.css'
 
 const Notice = () => {
     const [page, setPage] = useState(1);                // 현재 페이지
     const rowsPerPage = 5;
+
+    const navigate = useNavigate()
 
     // 페이지 변경 핸들러
     const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -21,7 +24,7 @@ const Notice = () => {
     ];
 
     const handleRowClick = (row: any) => {
-        
+        navigate(`/notice/${row.id}`)
     }
 
     return (

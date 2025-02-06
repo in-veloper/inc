@@ -11,6 +11,7 @@ import Login from './components/login/Login';
 import Faq from './components/faq/Faq';
 import Signup from './components/signup/Signup';
 import './App.css';
+import NoticeDetail from './components/notice/NoticeDetail';
 
 const theme = createTheme({
   typography: {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/notice" element={<Notice />} />
+            <Route path='/notice/:id' element={<NoticeDetail />} />
             <Route path="/inquiry" element={<Inquiry />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/medi-info" element={<MediInfo />} />
