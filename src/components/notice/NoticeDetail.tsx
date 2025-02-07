@@ -234,7 +234,10 @@ const NoticeDetail = () => {
                                     editorClassName="editor"
                                     toolbarClassName="toolbar"
                                     placeholder="댓글을 입력하세요..."
-                                    
+                                    editorStyle={{
+                                        border: '1px solid #DDD',
+                                        padding: '20px'
+                                    }}
                                 />
                                 {/* <ReactQuill
                                     ref={quillRef}
